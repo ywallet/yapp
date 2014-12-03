@@ -10,27 +10,27 @@
         $stateProvider.state("yapp", {
             url: "/yapp",
             abstract: true,
-            templateUrl: "yapp/templates/menu.html",
+            templateUrl: "templates/menu.html",
             controller: "AppCtrl"
         }).state("yapp.search", {
             url: "/search",
             views: {
                 menuContent: {
-                    templateUrl: "yapp/templates/search.html"
+                    templateUrl: "templates/search.html"
                 }
             }
         }).state("yapp.browse", {
             url: "/browse",
             views: {
                 'menuContent': {
-                    templateUrl: "yapp/templates/browse.html"
+                    templateUrl: "templates/browse.html"
                 }
             }
         }).state("yapp.playlists", {
             url: "/playlists",
             views: {
                 'menuContent': {
-                    templateUrl: "yapp/templates/playlists.html",
+                    templateUrl: "templates/playlists.html",
                     controller: "PlaylistsCtrl"
                 }
             }
@@ -38,7 +38,7 @@
             url: "/playlists/:playlistId",
             views: {
                 'menuContent': {
-                    templateUrl: "yapp/templates/playlist.html",
+                    templateUrl: "templates/playlist.html",
                     controller: "PlaylistCtrl"
                 }
             }
