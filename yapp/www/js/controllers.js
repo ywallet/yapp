@@ -1,5 +1,5 @@
 (function () {
-    angular.module('starter.controllers', [])
+    angular.module('yapp.controllers', [])
            .controller('AppCtrl', AppCtrlFunction )
            .controller('PlaylistsCtrl', PlaylistsCtrlFunction)
            .controller('PlaylistCtrl', PlaylistCtrlFunction)
@@ -26,7 +26,7 @@
       $scope.loginData = {};
 
       // Create the login modal that we will use later
-      $ionicModal.fromTemplateUrl('templates/login.html', { scope: $scope })
+      $ionicModal.fromTemplateUrl('yapp/templates/login.html', { scope: $scope })
                  .then(function(modal) { $scope.modal = modal; });
 
       // Triggered in the login modal to close it

@@ -1,49 +1,50 @@
 (function () {
+    
     angular
-        .module("starter")
+        .module("yapp") 
         .config(configFunction);
 
     configFunction.$inject = ["$stateProvider", "$urlRouterProvider"];
 
     function configFunction($stateProvider, $urlRouterProvider) {
-        $stateProvider.state("app", {
-            url: "/app",
+        $stateProvider.state("yapp", {
+            url: "/yapp",
             abstract: true,
-            templateUrl: "templates/menu.html",
+            templateUrl: "yapp/templates/menu.html",
             controller: "AppCtrl"
-        }).state("app.search", {
+        }).state("yapp.search", {
             url: "/search",
             views: {
                 menuContent: {
-                    templateUrl: "templates/search.html"
+                    templateUrl: "yapp/templates/search.html"
                 }
             }
-        }).state("app.browse", {
+        }).state("yapp.browse", {
             url: "/browse",
             views: {
-                menuContent: {
-                    templateUrl: "templates/browse.html"
+                'menuContent': {
+                    templateUrl: "yapp/templates/browse.html"
                 }
             }
-        }).state("app.playlists", {
+        }).state("yapp.playlists", {
             url: "/playlists",
             views: {
-                menuContent: {
-                    templateUrl: "templates/playlists.html",
+                'menuContent': {
+                    templateUrl: "yapp/templates/playlists.html",
                     controller: "PlaylistsCtrl"
                 }
             }
-        }).state("app.single", {
+        }).state("yapp.single", {
             url: "/playlists/:playlistId",
             views: {
-                menuContent: {
-                    templateUrl: "templates/playlist.html",
+                'menuContent': {
+                    templateUrl: "yapp/templates/playlist.html",
                     controller: "PlaylistCtrl"
                 }
             }
         });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise("/app/playlists");
+        $urlRouterProvider.otherwise("/yapp/playlists");
     }
 })();
