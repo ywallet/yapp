@@ -1,7 +1,6 @@
 (function () {
-    
     angular
-        .module("yapp") 
+        .module("yapp")
         .config(configFunction);
 
     configFunction.$inject = ["$stateProvider", "$urlRouterProvider"];
@@ -11,25 +10,67 @@
             url: "/yapp",
             abstract: true,
             templateUrl: "templates/menu.html",
-            controller: "AppCtrl"
-        }).state("yapp.search", {
-            url: "/search",
+            controller: "Dashboard"
+        }).state("yapp.allowances", {
+            url: "/allowances",
             views: {
                 menuContent: {
-                    templateUrl: "templates/search.html"
+                    templateUrl: "js/allowances/allowances.html",
+                    controller: "Allowances"
                 }
             }
-        }).state("yapp.browse", {
-            url: "/browse",
+        }).state("yapp.dashboard", {
+            url: "/dashboard",
             views: {
-                'menuContent': {
-                    templateUrl: "templates/browse.html"
+                menuContent: {
+                    templateUrl: "js/dashboard/dashboard.html",
+                    controller: "Dashboard"
+                }
+            }
+        }).state("yapp.history", {
+            url: "/history",
+            views: {
+                menuContent: {
+                    templateUrl: "js/history/history.html",
+                    controller: "History"
+                }
+            }
+        }).state("yapp.notifications", {
+            url: "/notifications",
+            views: {
+                menuContent: {
+                    templateUrl: "js/notifications/notifications.html",
+                    controller: "Notifications"
+                }
+            }
+        }).state("yapp.payments", {
+            url: "/payments",
+            views: {
+                menuContent: {
+                    templateUrl: "js/payments/payments.html",
+                    controller: "Payments"
+                }
+            }
+        }).state("yapp.savings", {
+            url: "/savings",
+            views: {
+                menuContent: {
+                    templateUrl: "js/savings/savings.html",
+                    controller: "Savings"
+                }
+            }
+        }).state("yapp.settings", {
+            url: "/settings",
+            views: {
+                menuContent: {
+                    templateUrl: "js/settings/settings.html",
+                    controller: "Settings"
                 }
             }
         }).state("yapp.playlists", {
             url: "/playlists",
             views: {
-                'menuContent': {
+                menuContent: {
                     templateUrl: "templates/playlists.html",
                     controller: "PlaylistsCtrl"
                 }
@@ -37,7 +78,7 @@
         }).state("yapp.single", {
             url: "/playlists/:playlistId",
             views: {
-                'menuContent': {
+                menuContent: {
                     templateUrl: "templates/playlist.html",
                     controller: "PlaylistCtrl"
                 }
@@ -45,6 +86,6 @@
         });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise("/yapp/playlists");
+        $urlRouterProvider.otherwise("/yapp/dashboard");
     }
 })();
