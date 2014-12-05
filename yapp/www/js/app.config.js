@@ -16,7 +16,8 @@
             views: {
                 menuContent: {
                     templateUrl: "js/allowances/allowances.html",
-                    controller: "Allowances"
+                    controller: "Allowances",
+                    controllerAs: "vm"
                 }
             }
         }).state("yapp.dashboard", {
