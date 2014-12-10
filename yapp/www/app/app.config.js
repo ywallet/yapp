@@ -85,6 +85,16 @@
                 }
             }
         });
+        $stateProvider.state("yapp.authentication", {
+            url: "/authentication",
+            views: {
+                menuContent: {
+                    templateUrl: "app/authentication/authentication.html",
+                    controller: "Authentication",
+                    controllerAs: "vm"
+                }
+            }
+        });
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise("/yapp/dashboard");
