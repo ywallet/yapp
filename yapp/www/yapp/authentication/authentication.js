@@ -20,6 +20,7 @@
         vm.state = "home";
 
         vm.doLogin = doLogin;
+        vm.doRegister = doRegister;
         vm.goToRegistration = goToRegistration;
         vm.goToLogin = goToLogin;
 
@@ -30,7 +31,15 @@
             vm.user.loginData.username = "";
             vm.user.pass = vm.user.loginData.password;
             vm.user.loginData.password = "";
-            vm.state = "home";
+            // vm.state = "home";
+        }
+
+        function doRegister() {
+            vm.user.name = vm.user.loginData.username;
+            vm.user.loginData.username = "";
+            vm.user.pass = vm.user.loginData.password;
+            vm.user.loginData.password = "";
+            // vm.state = "home";
         }
 
         function goToRegistration() {
