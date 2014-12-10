@@ -16,8 +16,12 @@
                 password: ""
             }
         };
+
+        vm.state = "home";
+
         vm.doLogin = doLogin;
-        vm.closeLogin = closeLogin;
+        vm.goToRegistration = goToRegistration;
+        vm.goToLogin = goToLogin;
 
         ////////////////////
 
@@ -26,10 +30,15 @@
             vm.user.loginData.username = "";
             vm.user.pass = vm.user.loginData.password;
             vm.user.loginData.password = "";
+            vm.state = "home";
         }
 
-        function closeLogin() {
-            
+        function goToRegistration() {
+            vm.state = "register";
+        }
+
+        function goToLogin() {
+            vm.state = "login";
         }
     }
 
