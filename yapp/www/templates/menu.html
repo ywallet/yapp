@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ion-side-menus>
 
   <ion-side-menu-content>
@@ -55,3 +56,66 @@
    </div>
   </ion-side-menu>
 </ion-side-menus>
+=======
+<ion-side-menus>
+
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" expose-aside-when="large">
+    <header class="bar bar-header bar-stable">
+      <h1 class="title">yWallet</h1>
+    </header>
+    <ion-content class="has-header has-bottom">
+      <ion-list>
+
+        <ion-item class="item menu-close nav-clear item-icon-left" ui-sref="yapp.dashboard">
+            <!-- <i class="icon ion-home"></i> -->
+            <i class="icon fa fa-area-chart"></i> Dashboard
+        </ion-item>
+        <ion-item class="item menu-close nav-clear item-icon-left" ui-sref="yapp.dashboard">
+            <!-- <i class="icon ion-card"></i> Conta-->
+            <i class="icon fa fa-bank"></i> Conta
+            <span class="badge badge-assertive">€68,13</span>
+        </ion-item>
+        <ion-item class="item menu-close nav-clear item-icon-left" ui-sref="yapp.allowances">
+            <!-- <i class="icon ion-cash"></i> Mesadas-->
+            <i class="icon fa fa-money"></i> Mesadas
+        </ion-item>
+        <ion-item class="item menu-close nav-clear item-icon-left" ui-sref="yapp.payments">
+            <!-- <i class="icon ion-paper-airplane"></i> Pagamentos-->
+            <i class="icon fa fa-send-o"></i> Pagamentos
+        </ion-item>
+        <ion-item class="item menu-close nav-clear item-icon-left" ui-sref="yapp.history">
+            <!-- <i class="icon ion-folder"></i> Historico -->
+            <i class="icon fa fa-tasks"></i> Historico
+        </ion-item>
+        <ion-item class="item menu-close nav-clear item-icon-left" ui-sref="yapp.notifications">
+            <i class="icon fa fa-bell-o"></i> Notificações
+        </ion-item>
+        <ion-item class="item menu-close nav-clear item-icon-left" ui-sref="yapp.savings">
+            <!-- <i class="icon ion-archive"></i> Poupança-->
+            <i class="icon fa fa-database"></i> Poupança
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    <div class="fixed-outside">
+      <ion-content scroll="false">
+      <ion-list>
+        <ion-item class="item menu-close nav-clear item-icon-left" ui-sref="yapp.savings">
+          <!-- <i class="icon ion-gear-b"></i> Configuração-->
+          <i class="icon fa fa-cog"></i> Configuração
+        </ion-item>
+      </ion-list>
+    </ion-content>
+   </div>
+  </ion-side-menu>
+</ion-side-menus>
+>>>>>>> 62bda28b29159a14a67a04abc1dc1989f1e493fa
