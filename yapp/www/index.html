@@ -5,7 +5,8 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-
+    <link href="css/style.css" rel="stylesheet">
+    
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
 
@@ -16,13 +17,52 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="js/app.module.js"></script>
-    <script src="js/app.config.js"></script>
-    <script src="js/app.run.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="yapp/yapp.module.js"></script>
+    <script src="yapp/yapp.config.js"></script>
+    
+    <script src="yapp/layout/layout.module.js"></script>
+    <script src="yapp/layout/config.route.js"></script>
+    <script src="yapp/layout/menu.js"></script>
+
+    <script src="yapp/authentication/authentication.module.js"></script>
+    <script src="yapp/authentication/config.route.js"></script>
+    <script src="yapp/authentication/authentication.js"></script>
+
+    <script src="yapp/allowances/allowances.module.js"></script>
+    <script src="yapp/allowances/config.route.js"></script>
+    <script src="yapp/allowances/allowances.js"></script>
+
+    <script src="yapp/dashboard/dashboard.module.js"></script>
+    <script src="yapp/dashboard/config.route.js"></script>
+    <script src="yapp/dashboard/dashboard.js"></script>
+
+    <script src="yapp/account/account.module.js"></script>
+    <script src="yapp/account/config.route.js"></script>
+    <script src="yapp/account/account.js"></script>      
+
+    <script src="yapp/history/history.module.js"></script>
+    <script src="yapp/history/config.route.js"></script>
+    <script src="yapp/history/history.js"></script>
+
+    <script src="yapp/notifications/notifications.module.js"></script>
+    <script src="yapp/notifications/config.route.js"></script>
+    <script src="yapp/notifications/notifications.js"></script>
+
+    <script src="yapp/payments/payments.module.js"></script>
+    <script src="yapp/payments/config.route.js"></script>
+    <script src="yapp/payments/payments.js"></script>
+
+    <script src="yapp/savings/savings.module.js"></script>
+    <script src="yapp/savings/config.route.js"></script>
+    <script src="yapp/savings/savings.js"></script>
+
+    <script src="yapp/settings/settings.module.js"></script>
+    <script src="yapp/settings/config.route.js"></script>
+    <script src="yapp/settings/settings.js"></script>  
+
   </head>
 
-  <body ng-app="starter">
+  <body ng-app="yapp">
     <ion-nav-view></ion-nav-view>
   </body>
 </html>

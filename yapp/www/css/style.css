@@ -1,1 +1,12 @@
 /* Empty. Add your own CSS if you like */
+
+.fixed-outside{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 56px;
+}
+
+.has-bottom{
+  bottom: 56px !important;
+}
