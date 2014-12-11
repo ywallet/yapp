@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="true" title="Login">
+<ion-view title="yWallet">
     <ion-header-bar class="bar-dark">
         <h1 class="title">yWallet</h1>
         <!-- <div class="buttons">
@@ -7,17 +7,15 @@
     </ion-header-bar>
     <ion-content class="has-header padding">
         <!-- WELCOME PAGE -->
-        <div ng-show="state == 'home'">
-            <div class="yWallet-icon"></div>
-            <h2 class="text-center">A simple, catchy statement.</h2>
-            <div class="double-button text-center">
-                <button class="button button-balanced" ng-click="goToRegistration()">New User?</button>
-                <button class="button button-positive" ng-click="goToLogin()">Sign In</button>
-            </div>
+        <div class="yWallet-icon"></div>
+        <h2 class="text-center">A simple, catchy statement.</h2>
+            <button class="button button-block button-balanced" ng-click="$state.go('yapp.register')">New User?</button>
+            <button class="button button-block button-positive">Sign In</button>
+        <div class="double-button text-center">
         </div>
 
         <!-- REGISTER PAGE -->
-        <div ng-show="state == 'register'">
+        <!-- <div ng-show="state == 'register'">
             <form ng-submit="doRegister()">
                 <div class="list">
                     <label class="item item-input item-stacked-label">
@@ -41,10 +39,10 @@
                 {{ user.name }}<br/>
                 {{ user.pass }}
             </div>
-        </div>
+        </div> -->
 
         <!-- LOGIN PAGE -->
-        <div ng-show="state == 'login'">
+        <!-- <div ng-show="state == 'login'">
             <form ng-submit="doLogin()">
                 <div class="list">
                     <label class="item item-input item-stacked-label">
@@ -65,6 +63,6 @@
                 {{ user.name }}<br/>
                 {{ user.pass }}
             </div>
-        </div>
+        </div> -->
     </ion-content>
 </ion-view>

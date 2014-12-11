@@ -5,8 +5,8 @@
         .module('yapp.authentication')
         .controller('Authentication', Authentication)
 
-    Authentication.$inject = ["$scope"];
-    function Authentication($scope) {
+    Authentication.$inject = ["$scope", "$rootScope"];
+    function Authentication($scope, $rootScope) {
         var vm = $scope;
         vm.user = {
             name: "yUser",
