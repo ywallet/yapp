@@ -1,0 +1,25 @@
+<ion-view title="yWallet">
+    <ion-content class="has-header padding">
+        <form ng-submit="doRegister()">
+            <div class="list">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Your E-mail:</span>
+                    <input type="text" ng-model="user.loginData.username">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Your Password:</span>
+                    <input type="password" ng-model="user.loginData.password">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Confirm Password:</span>
+                    <input type="password">
+                </label>
+                <button class="button button-block button-balanced" type="submit">Get Started</button>
+            </div>
+        </form>
+        <div>
+            {{ user.name }}<br/>
+            {{ user.pass }}
+        </div>
+    </ion-content>
+</ion-view>
