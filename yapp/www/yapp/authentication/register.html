@@ -3,20 +3,20 @@
         <form ng-submit="doRegister()">
             <div class="list">
                 <label class="item item-input item-stacked-label">
-                    <span class="input-label">Your Name:</span>
-                    <input type="text" ng-model="registerData.name">
+                    <span class="input-label">First Name:</span>
+                    <input type="text" ng-model="registerData.name" ng-minlength="2" ng-maxlength="24" required="">
                 </label>
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Your E-mail:</span>
-                    <input type="email" ng-model="registerData.email">
+                    <input type="email" ng-model="registerData.email" required="">
                 </label>
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Your Password:</span>
-                    <input type="password" ng-model="registerData.password">
+                    <input type="password" ng-model="registerData.password" required="" ng-minlength="6" ng-maxlength="24">
                 </label>
                 <label class="item item-input item-stacked-label">
                     <span class="input-label" ng-model="registerData.cpass">Confirm Password:</span>
-                    <input type="password">
+                    <input type="password" ng-model="registerData.cpass"  required="" ng-minlength="6" ng-maxlength="24">
                 </label>
             </div>
             <button class="button button-block button-balanced" type="submit">Get Started</button>
