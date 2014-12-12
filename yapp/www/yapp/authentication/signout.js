@@ -3,7 +3,7 @@
 
     angular
         .module('yapp.authentication')
-        .controller('SignOut', SignOut)
+        .controller('SignOut', SignOut);
 
     SignOut.$inject = ["$scope", "$state", "$rootScope"];
     function SignOut($scope, $state, $rootScope) {

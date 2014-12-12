@@ -24,7 +24,7 @@
             views: {
                 authContent: {
                     templateUrl: "yapp/authentication/signin.html",
-                    controller: "Authentication"
+                    controller: "SignIn"
                 }
             }
         }).state("authentication.register", {
@@ -32,7 +32,7 @@
             views: {
                 authContent: {
                     templateUrl: "yapp/authentication/register.html",
-                    controller: "Authentication"
+                    controller: "Register"
                 }
             }
         }).state("yapp.signout", {

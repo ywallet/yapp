@@ -3,23 +3,23 @@
         <form ng-submit="doRegister()">
             <div class="list">
                 <label class="item item-input item-stacked-label">
+                    <span class="input-label">Your Name:</span>
+                    <input type="text" ng-model="registerData.name">
+                </label>
+                <label class="item item-input item-stacked-label">
                     <span class="input-label">Your E-mail:</span>
-                    <input type="text" ng-model="user.loginData.username">
+                    <input type="email" ng-model="registerData.email">
                 </label>
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Your Password:</span>
-                    <input type="password" ng-model="user.loginData.password">
+                    <input type="password" ng-model="registerData.password">
                 </label>
                 <label class="item item-input item-stacked-label">
-                    <span class="input-label">Confirm Password:</span>
+                    <span class="input-label" ng-model="registerData.cpass">Confirm Password:</span>
                     <input type="password">
                 </label>
-                <button class="button button-block button-balanced" type="submit">Get Started</button>
             </div>
+            <button class="button button-block button-balanced" type="submit">Get Started</button>
         </form>
-        <div>
-            {{ user.name }}<br/>
-            {{ user.pass }}
-        </div>
     </ion-content>
 </ion-view>
