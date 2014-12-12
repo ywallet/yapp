@@ -16,14 +16,16 @@
 
         function detectSession() {
             // automatic login
-            /*$rootScope.yUser = {
+            $rootScope.yUser = {
                 name: "yUser",
                 email: "yUser@yWallet.com"
-            };*/
+            };
 
             if ($rootScope.yUser != null) {
+                $rootScope.$viewHistory.currentView = $rootScope.$viewHistory.backView;
                 $state.go("yapp.dashboard");
             } else {
+                $rootScope.$viewHistory.currentView = $rootScope.$viewHistory.backView;
                 $state.go("authentication.index");
             }
         }
