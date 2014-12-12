@@ -7,13 +7,13 @@
 
     SignOut.$inject = ["$scope", "$state"];
     function SignOut($scope, $state) {
-        $scope.signOut = doSignOut;
+        $scope.doSignOut = doSignOut;
 
         ////////////////////
 
         function doSignOut() {
-            //$state.clearHistory();
-            $state.go("authentication");
+            // $state.clearHistory();
+            // $state.go("authentication");
         }
     }
 
