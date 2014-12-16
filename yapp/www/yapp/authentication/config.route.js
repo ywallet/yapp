@@ -16,7 +16,8 @@
             url: "",
             views: {
                 authContent: {
-                    templateUrl: "yapp/authentication/authentication-index.html"
+                    templateUrl: "yapp/authentication/authentication-index.html",
+                    controller: "AuthenticationRouter"
                 }
             }
         }).state("authentication.signin", {
