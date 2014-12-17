@@ -20,6 +20,9 @@
         ////////////////////
 
         function doRegister() {
+            if ($scope.registerData.password !== $scope.registerData.cpass) {
+                return;
+            }
             $scope.registerData.password = "";
             $scope.registerData.cpass = "";
             $rootScope.yUser = {

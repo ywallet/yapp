@@ -1,17 +1,26 @@
 <ion-view title="yWallet">
     <ion-content class="has-header padding">
-        <form ng-submit="doSignIn()">
+        <form name="signinForm" ng-submit="doSignIn()" novalidate>
             <div class="list">
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Your E-mail:</span>
-                    <input type="email" ng-model="signinData.email" required="">
-                </label>
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Your Password:</span>
-                    <input type="password" ng-model="signinData.password" required ng-maxlength="24">
-                </label>
+                <div class="item item-input item-stacked-label">
+                    <label class="input-label">Your E-mail:</label>
+                    <input type="email" name="userEmail" ng-model="signinData.email" required>
+                    <span class="assertive" ng-show="signinForm.userEmail.$error.required && signinForm.userEmail.$dirty">
+                        This is required.
+                    </span>
+                    <span class="assertive" ng-show="!signinForm.userEmail.$error.required && signinForm.userEmail.$dirty && signinForm.userEmail.$error.email">
+                        That isn't a valid e-mail.
+                    </span>
+                </div>
+                <div class="item item-input item-stacked-label">
+                    <label class="input-label">Your Password:</label>
+                    <input type="password" name="userPass" ng-model="signinData.password" required maxlength="24">
+                    <span class="assertive" ng-show="signinForm.userPass.$error.required && signinForm.userPass.$dirty">
+                        This is required.
+                    </span>
+                </div>
             </div>
-            <button class="button button-block button-positive" type="submit">Sign in</button>
+            <button type="submit" class="button button-block button-positive" ng-disabled="signinForm.$invalid">Sign in</button>
         </form>
         <a class="button button-block button-clear" ui-sref="authentication.recovery">Forgot Password?</a>
     </ion-content>

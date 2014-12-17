@@ -1,25 +1,49 @@
 <ion-view title="yWallet">
     <ion-content class="has-header padding">
-        <form ng-submit="doRegister()">
+        <form name="registerForm" ng-submit="doRegister()" novalidate>
             <div class="list">
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">First Name:</span>
-                    <input type="text" ng-model="registerData.name" ng-minlength="2" ng-maxlength="24" required="">
-                </label>
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Your E-mail:</span>
-                    <input type="email" ng-model="registerData.email" required="">
-                </label>
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Your Password:</span>
-                    <input type="password" ng-model="registerData.password" required="" ng-minlength="6" ng-maxlength="24">
-                </label>
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label" ng-model="registerData.cpass">Confirm Password:</span>
-                    <input type="password" ng-model="registerData.cpass"  required="" ng-minlength="6" ng-maxlength="24">
-                </label>
+                <div class="item item-input item-stacked-label">
+                    <label class="input-label">First Name:</label>
+                    <input type="text" name="firstName" ng-model="registerData.name" required ng-maxlength="32">
+                    <span class="assertive" ng-show="registerForm.firstName.$error.required && registerForm.firstName.$dirty">
+                        This is required.
+                    </span>
+                    <span class="assertive" ng-show="registerForm.firstName.$error.maxlength">
+                        A name can't exceed 32 characters. Sorry!
+                    </span>
+                </div>
+                <div class="item item-input item-stacked-label">
+                    <label class="input-label">Your E-mail:</label>
+                    <input type="email" name="userEmail" ng-model="registerData.email" required>
+                    <span class="assertive" ng-show="registerForm.userEmail.$error.required && registerForm.userEmail.$dirty">
+                        This is required.
+                    </span>
+                    <span class="assertive" ng-show="!registerForm.userEmail.$error.required && registerForm.userEmail.$dirty && registerForm.userEmail.$error.email">
+                        That isn't a valid e-mail.
+                    </span>
+                </div>
+                <div class="item item-input item-stacked-label">
+                    <label class="input-label">Your Password:</label>
+                    <input type="password" name="userPass" ng-model="registerData.password" required ng-minlength="6" ng-maxlength="24">
+                    <span class="assertive" ng-show="registerForm.userPass.$error.required && registerForm.userPass.$dirty">
+                        This is required.
+                    </span>
+                    <span class="assertive" ng-show="!registerForm.userPass.$error.required && (registerForm.userPass.$error.minlength || registerForm.userPass.$error.maxlength) && registerForm.userPass.$dirty">
+                        A password must be between 6 and 24 characters long.
+                    </span>
+                </div>
+                <div class="item item-input item-stacked-label">
+                    <label class="input-label" ng-model="registerData.cpass">Confirm Password:</label>
+                    <input type="password" name="confPass" ng-model="registerData.cpass" required confirm-password="registerData.password">
+                    <span class="assertive" ng-show="registerForm.confPass.$error.required && registerForm.confPass.$dirty">
+                        Please, confirm your password.
+                    </span>
+                    <span class="assertive" ng-show="!registerForm.confPass.$error.required && registerForm.confPass.$error.match && registerForm.confPass.$dirty">
+                        The passwords don't match!
+                    </span>
+                </div>
             </div>
-            <button class="button button-block button-balanced" type="submit">Get Started</button>
+            <button type="submit" class="button button-block button-balanced" ng-disabled="registerForm.$invalid">Get Started</button>
         </form>
     </ion-content>
 </ion-view>
