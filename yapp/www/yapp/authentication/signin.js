@@ -8,20 +8,20 @@
     SignIn.$inject = ["$scope", "$rootScope", "$state"];
 
     function SignIn($scope, $rootScope, $state) {
-        $scope.loginData = {
+        $scope.signinData = {
             email: "",
             password: ""
         };
 
-        $scope.doLogin = doLogin;
+        $scope.doSignIn = doSignIn;
 
         ////////////////////
 
-        function doLogin() {
-            $scope.loginData.password = "";
+        function doSignIn() {
+            $scope.signinData.password = "";
             $rootScope.yUser = {
                 name: "yUser",
-                email: $scope.loginData.email
+                email: $scope.signinData.email
             };
             $rootScope.$viewHistory.currentView = $rootScope.$viewHistory.backView;
             $state.go("yapp.dashboard");
