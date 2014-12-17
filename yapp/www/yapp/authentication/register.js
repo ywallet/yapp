@@ -5,8 +5,9 @@
         .module("yapp.authentication")
         .controller("Register", Register);
 
-    Register.$inject = ["$scope", "$rootScope", "$state"];
-    function Register($scope, $rootScope, $state) {
+    Register.$inject = ["$scope", "$rootScope", "StateRouter"];
+
+    function Register($scope, $rootScope, StateRouter) {
         $scope.registerData = {
             name: "",
             email: "",
@@ -25,8 +26,7 @@
                 name: $scope.registerData.name,
                 email: $scope.registerData.email
             };
-            $rootScope.$viewHistory.currentView = $rootScope.$viewHistory.backView;
-            $state.go("yapp.dashboard");
+            StateRouter.goAndForget("yapp.dashboard");
         }
     }
 })();

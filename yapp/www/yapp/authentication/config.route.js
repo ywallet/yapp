@@ -16,8 +16,7 @@
             url: "",
             views: {
                 authContent: {
-                    templateUrl: "yapp/authentication/authentication-index.html",
-                    controller: "AuthenticationRouter"
+                    templateUrl: "yapp/authentication/authentication-index.html"
                 }
             }
         }).state("authentication.signin", {
@@ -34,6 +33,14 @@
                 authContent: {
                     templateUrl: "yapp/authentication/register.html",
                     controller: "Register"
+                }
+            }
+        }).state("authentication.recovery", {
+            url: "/recovery",
+            views: {
+                authContent: {
+                    templateUrl: "yapp/authentication/forgot-password.html",
+                    controller: "ForgotPassword"
                 }
             }
         }).state("yapp.signout", {

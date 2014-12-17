@@ -5,9 +5,9 @@
 		.module('yapp')
 		.controller('Preloader', Preloader)
 
-    Preloader.$inject = ["$rootScope", "$state"];
+    Preloader.$inject = ["$rootScope", "StateRouter"];
 
-	function Preloader($rootScope, $state) {
+	function Preloader($rootScope, StateRouter) {
         $rootScope.yUser = null;
 
         detectSession();
@@ -22,11 +22,9 @@
             };*/
 
             if ($rootScope.yUser != null) {
-                $rootScope.$viewHistory.currentView = $rootScope.$viewHistory.backView;
-                $state.go("yapp.dashboard");
+                StateRouter.goAndForget("yapp.dashboard");
             } else {
-                $rootScope.$viewHistory.currentView = $rootScope.$viewHistory.backView;
-                $state.go("authentication.index");
+                StateRouter.goAndForget("authentication.index");
             }
         }
 	}

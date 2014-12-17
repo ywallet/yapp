@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("SignIn", SignIn);
 
-    SignIn.$inject = ["$scope", "$rootScope", "$state"];
+    SignIn.$inject = ["$scope", "$rootScope", "StateRouter"];
 
-    function SignIn($scope, $rootScope, $state) {
+    function SignIn($scope, $rootScope, StateRouter) {
         $scope.signinData = {
             email: "",
             password: ""
@@ -23,8 +23,7 @@
                 name: "yUser",
                 email: $scope.signinData.email
             };
-            $rootScope.$viewHistory.currentView = $rootScope.$viewHistory.backView;
-            $state.go("yapp.dashboard");
+            StateRouter.goAndForget("yapp.dashboard");
         }
     }
 })();

@@ -19,6 +19,7 @@
         /*
          * Feature areas
          */
+        'yapp.services',
         'yapp.layout',
         'yapp.authentication',
         'yapp.allowances',        

@@ -5,16 +5,15 @@
         .module('yapp.authentication')
         .controller('SignOut', SignOut);
 
-    SignOut.$inject = ["$scope", "$state", "$rootScope"];
-    function SignOut($scope, $state, $rootScope) {
+    SignOut.$inject = ["$scope", "$rootScope", "StateRouter"];
+    function SignOut($scope, $rootScope, StateRouter) {
         $scope.doSignOut = doSignOut;
 
         ////////////////////
 
         function doSignOut() {
             $rootScope.yUser = null;
-            $rootScope.$viewHistory.currentView = $rootScope.$viewHistory.backView;
-            $state.go("home");
+            StateRouter.goAndForget("home");
         }
     }
 
