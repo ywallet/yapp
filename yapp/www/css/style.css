@@ -79,7 +79,7 @@ i.icon.fa {
 header.positive {
   height: 153px; 
   padding: 33px 26px; 
-  background: url('css/patterns/header-profile.png') no-repeat scroll 0 0 rgba(0, 0, 0, 0); 
+  background: url('patterns/header-profile.png') no-repeat scroll 0 0 rgba(0, 0, 0, 0); 
   background-color: #233646;
 }
 

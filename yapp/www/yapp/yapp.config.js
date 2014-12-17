@@ -2,10 +2,22 @@
     
     angular
         .module("yapp")
+		.config(configAngularTranslate)
         .run(runFunction)
 
-    runFunction.$inject = ["$ionicPlatform"];
+	configAngularTranslate.$inject = ["$translateProvider"];
+	
+	function configAngularTranslate($translateProvider) {
+		$translateProvider.translations('en', translations_en);
+		$translateProvider.translations('es', translations_es);
+		$translateProvider.translations('fr', translations_fr);
+		$translateProvider.translations('it', translations_it);
+		$translateProvider.preferredLanguage('en');
+		// console.log("$translateProvider initialized");
+	}
 
+    runFunction.$inject = ["$ionicPlatform"];
+	
     function runFunction($ionicPlatform) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

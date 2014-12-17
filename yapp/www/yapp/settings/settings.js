@@ -5,9 +5,13 @@
         .module('yapp.settings')
         .controller('Settings', Settings)
 
-    function Settings()
+	Settings.$inject = ["$scope", "$translate"];
+	function Settings($scope, $translate)
     {
-        console.log('Settings');
+        $scope.curlang = $translate.use();
+        $scope.changeLanguage = function(key) {
+            $translate.use(key);
+            $scope.curlang = key;
+        };
     }
-
 })();

@@ -14,7 +14,7 @@
          * We could place these under every feature area,
          * but this is easier to maintain.
          */
-
+		'pascalprecht.translate',
 
         /*
          * Feature areas
