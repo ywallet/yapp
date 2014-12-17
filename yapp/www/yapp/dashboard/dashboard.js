@@ -5,9 +5,7 @@
         .module('yapp.dashboard')
         .controller('Dashboard', Dashboard)
 
-    function Dashboard()
-    {
-        console.log('Dashboard');
+    function Dashboard() {
+        console.log('History');
     }
-
 })();

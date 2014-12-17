@@ -11,8 +11,8 @@
         $stateProvider.state("yapp", {
             url: "/yapp",
             abstract: true,
-            templateUrl: "yapp/layout/menu.html",
-            controller: "Menu"
+            templateUrl: "yapp/layout/sidemenu.html",
+            controller: "Sidemenu"
         });
     }
 
