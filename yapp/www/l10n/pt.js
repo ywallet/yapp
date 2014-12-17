@@ -1,4 +1,13 @@
-var translations_en = {
+var translations_pt = {
+		account: 'Conta',
+		allowances: 'Mesadas',
+		dashboard: 'Dashboard',
+		history: 'Historico',
+		notifications: 'Notificações',
+		payments: 'Pagamentos',
+		savings: 'Poupanças',
+		settings: 'Definições',
+		
     search: 'Procurar',
     cancel: 'Cancelar',
     about: 'Sobre',

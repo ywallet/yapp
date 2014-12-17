@@ -1,4 +1,13 @@
 var translations_fr = {
+		account: 'Account',
+		allowances: 'Allowances',
+		dashboard: 'Dashboard',
+		history: 'History',
+		notifications: 'Notifications',
+		payments: 'Payments',
+		savings: 'Savings',
+		settings: 'Settings',
+		
     search: 'Rechercher',
     cancel: 'Annuler',
     about: 'Sur',
