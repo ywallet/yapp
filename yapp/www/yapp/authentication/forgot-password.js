@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("ForgotPassword", ForgotPassword);
 
-    ForgotPassword.$inject = ["$scope", "$rootScope", "$state"];
+    ForgotPassword.$inject = ["$scope", "$rootScope", "StateRouter"];
 
-    function ForgotPassword($scope, $rootScope, $state) {
+    function ForgotPassword($scope, $rootScope, StateRouter) {
         $scope.recoveryData = {
             email: ""
         };
@@ -17,8 +17,7 @@
         ////////////////////
 
         function doRecovery() {
-            $rootScope.$viewHistory.currentView = $rootScope.$viewHistory.backView;
-            $state.go("yapp.dashboard");
+            StateRouter.goAndForget("yapp.dashboard");
         }
     }
 })();
