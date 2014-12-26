@@ -7,6 +7,7 @@ var translations_es = {
 		payments: 'Pagamientos',
 		savings: 'Aforros',
 		settings: 'Definiciones',
+        signout: 'Salir',
 		
     search: 'Buscar',
     cancel: 'Reset',
