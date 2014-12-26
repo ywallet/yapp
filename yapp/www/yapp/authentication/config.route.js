@@ -43,6 +43,13 @@
                     controller: "ForgotPassword"
                 }
             }
+        }).state("authentication.terms", {
+            url: "/terms",
+            views: {
+                authContent: {
+                    templateUrl: "yapp/authentication/terms.html"
+                }
+            }
         }).state("yapp.signout", {
             url: "/signout",
             views: {
