@@ -49,7 +49,8 @@
             url: "/personal-data",
             views: {
                 accountSettings: {
-                    templateUrl: "yapp/settings/account/personal-data.html"
+                    templateUrl: "yapp/settings/account/personal-data.html",
+                    controller: "PersonalData"
                 }
             }
         }).state("yapp.accountSettings.password", {
