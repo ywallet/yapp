@@ -32,28 +32,28 @@
                 }
             }
         }).state("yapp.accountSettings.link", {
-            url: "",
+            url: "/link-wallets",
             views: {
                 accountSettings: {
                     templateUrl: "yapp/settings/account/link-wallets.html"
                 }
             }
         }).state("yapp.accountSettings.wallet", {
-            url: "",
+            url: "/register-service",
             views: {
                 accountSettings: {
                     templateUrl: "yapp/settings/account/register-service.html"
                 }
             }
         }).state("yapp.accountSettings.personal", {
-            url: "",
+            url: "/personal-data",
             views: {
                 accountSettings: {
                     templateUrl: "yapp/settings/account/personal-data.html"
                 }
             }
         }).state("yapp.accountSettings.password", {
-            url: "",
+            url: "/change-password",
             views: {
                 accountSettings: {
                     templateUrl: "yapp/settings/account/change-password.html"
