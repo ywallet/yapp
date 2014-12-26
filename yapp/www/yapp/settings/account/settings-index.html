@@ -1,0 +1,14 @@
+<ion-view title="{{ 'settings' | translate}}">
+    <ion-content class="has-header" padding="true">
+        <h3 class="text-center">{{ 'settings' | translate }}</h3>
+        <p class="text-center">Here you can manage your account and change some of its settings.</p>
+        <div class="padding-bottom">
+            <a class="button button-block button-positive" ui-sref="yapp.accountSettings.link">Link yWallets</a>
+            <a class="button button-block button-positive" ui-sref="yapp.accountSettings.wallet">Register Wallet Service</a>
+        </div>
+        <div>
+            <a class="button button-block button-assertive" ui-sref="yapp.accountSettings.personal">Change Personal Data</a>
+            <a class="button button-block button-assertive" ui-sref="yapp.accountSettings.password">Change Password</a>
+        </div>
+    </ion-content>
+</ion-view>

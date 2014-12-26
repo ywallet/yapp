@@ -16,6 +16,21 @@
                     controller: "Settings"
                 }
             }
+        }).state("yapp.accountSettings", {
+            url: "/acc-settings",
+            abstract: true,
+            views: {
+                menuContent: {
+                    templateUrl: "yapp/settings/account/settings.html"
+                }
+            }
+        }).state("yapp.accountSettings.index", {
+            url: "",
+            views: {
+                accountSettings: {
+                    templateUrl: "yapp/settings/account/settings-index.html"
+                }
+            }
         });
     }
 
