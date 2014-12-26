@@ -12,7 +12,8 @@
             name: "",
             email: "",
             password: "",
-            cpass: ""
+            cpass: "",
+            agrees: false
         };
 
         $scope.doRegister = doRegister;
@@ -21,6 +22,9 @@
 
         function doRegister() {
             if ($scope.registerData.password !== $scope.registerData.cpass) {
+                return;
+            }
+            if (!$scope.registerData.agrees) {
                 return;
             }
             $scope.registerData.password = "";

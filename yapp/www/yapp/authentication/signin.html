@@ -5,17 +5,17 @@
                 <div class="item item-input item-stacked-label">
                     <label class="input-label">Your E-mail:</label>
                     <input type="email" name="userEmail" ng-model="signinData.email" required>
-                    <span class="assertive" ng-show="signinForm.userEmail.$error.required && signinForm.userEmail.$dirty">
+                    <span class="assertive item-text-wrap" ng-show="signinForm.userEmail.$error.required && signinForm.userEmail.$dirty">
                         This is required.
                     </span>
-                    <span class="assertive" ng-show="!signinForm.userEmail.$error.required && signinForm.userEmail.$dirty && signinForm.userEmail.$error.email">
+                    <span class="assertive item-text-wrap" ng-show="!signinForm.userEmail.$error.required && signinForm.userEmail.$dirty && signinForm.userEmail.$error.email">
                         That isn't a valid e-mail.
                     </span>
                 </div>
                 <div class="item item-input item-stacked-label">
                     <label class="input-label">Your Password:</label>
                     <input type="password" name="userPass" ng-model="signinData.password" required maxlength="24">
-                    <span class="assertive" ng-show="signinForm.userPass.$error.required && signinForm.userPass.$dirty">
+                    <span class="assertive item-text-wrap" ng-show="signinForm.userPass.$error.required && signinForm.userPass.$dirty">
                         This is required.
                     </span>
                 </div>
