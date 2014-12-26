@@ -31,6 +31,34 @@
                     templateUrl: "yapp/settings/account/settings-index.html"
                 }
             }
+        }).state("yapp.accountSettings.link", {
+            url: "",
+            views: {
+                accountSettings: {
+                    templateUrl: "yapp/settings/account/link-wallets.html"
+                }
+            }
+        }).state("yapp.accountSettings.wallet", {
+            url: "",
+            views: {
+                accountSettings: {
+                    templateUrl: "yapp/settings/account/register-service.html"
+                }
+            }
+        }).state("yapp.accountSettings.personal", {
+            url: "",
+            views: {
+                accountSettings: {
+                    templateUrl: "yapp/settings/account/personal-data.html"
+                }
+            }
+        }).state("yapp.accountSettings.password", {
+            url: "",
+            views: {
+                accountSettings: {
+                    templateUrl: "yapp/settings/account/change-password.html"
+                }
+            }
         });
     }
 
