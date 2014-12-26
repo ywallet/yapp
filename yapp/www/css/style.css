@@ -102,3 +102,15 @@ header.positive {
   color: #233646; 
   background-color: #233646;
 }
+
+.yWallet-icon {
+    background-image: url(../img/ionic.png);
+    width: 128px;
+    height: 128px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.double-button button {
+    width: 40%
+}

@@ -17,8 +17,6 @@
                 }
             }
         });
-
-        $urlRouterProvider.otherwise("/yapp/dashboard");
     }
 
 })();
