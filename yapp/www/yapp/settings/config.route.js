@@ -57,7 +57,8 @@
             url: "/change-password",
             views: {
                 accountSettings: {
-                    templateUrl: "yapp/settings/account/change-password.html"
+                    templateUrl: "yapp/settings/account/change-password.html",
+                    controller: "ChangePassword"
                 }
             }
         });
