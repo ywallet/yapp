@@ -43,7 +43,8 @@
             url: "/register-service",
             views: {
                 accountSettings: {
-                    templateUrl: "yapp/settings/account/register-service.html"
+                    templateUrl: "yapp/settings/account/register-service.html",
+                    controller: "RegisterService"
                 }
             }
         }).state("yapp.accountSettings.personal", {
