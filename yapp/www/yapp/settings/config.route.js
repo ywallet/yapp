@@ -35,7 +35,8 @@
             url: "/link-wallets",
             views: {
                 accountSettings: {
-                    templateUrl: "yapp/settings/account/link-wallets.html"
+                    templateUrl: "yapp/settings/account/link-wallets.html",
+                    controller: "LinkWallets"
                 }
             }
         }).state("yapp.accountSettings.wallet", {
