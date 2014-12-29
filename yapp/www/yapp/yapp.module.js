@@ -9,12 +9,14 @@
          * it's components are available.
          */
          'ionic',
+         'angular-data.DSCacheFactory',
         /*
          * Everybody has access to these.
          * We could place these under every feature area,
          * but this is easier to maintain.
          */
-				'pascalprecht.translate',
+        'pascalprecht.translate',
+        'yapp.services',
 
         /*
          * Feature areas

@@ -6,7 +6,6 @@
         .config(defineRoutes);
 
     defineRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
-            
     function defineRoutes($stateProvider, $urlRouterProvider) {
         $stateProvider.state("yapp.notifications", {
             url: "/notifications",
