@@ -6,8 +6,7 @@
 		.factory('Dataservice', Dataservice);
 
 	Dataservice.$inject = ['$http', '$q', '$ionicLoading', 'DSCacheFactory'];
-	function Dataservice($http, $q, $ionicLoading, DSCacheFactory)
-	{
+	function Dataservice($http, $q, $ionicLoading, DSCacheFactory) {
 		var hostname = 'http://localhost:8100/api/';
 
 		var service = {

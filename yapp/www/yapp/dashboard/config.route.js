@@ -5,9 +5,9 @@
         .module('yapp.dashboard')
         .config(defineRoutes);
 
-    defineRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
+    defineRoutes.$inject = ["$stateProvider"];
             
-    function defineRoutes($stateProvider, $urlRouterProvider) {
+    function defineRoutes($stateProvider) {
         $stateProvider.state("yapp.dashboard", {
             url: "/dashboard",
             views: {
