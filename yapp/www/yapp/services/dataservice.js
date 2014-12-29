@@ -6,18 +6,19 @@
 		.factory('Dataservice', Dataservice);
 
 	Dataservice.$inject = ['$http', '$q', '$ionicLoading', 'DSCacheFactory'];
-	function Dataservice($http, $q, $ionicLoading, DSCacheFactory) {
+	function Dataservice($http, $q, $ionicLoading, DSCacheFactory)
+	{
 		var hostname = 'http://localhost:8100/api/';
 
 		var service = {
-			getNotifications: getNotifications()
+			getNotifications: getNotifications(false)
 		}
 
 		// Caches - Define Offline mode
 		var notificationsCache = DSCacheFactory.get('notificationsCache');
 		notificationsCache.setOptions({
 			onExpire: function(key, value) {
-				getNotifications()
+				getNotifications(true)
 					.then(function() {
 
 					}, function() {
@@ -29,7 +30,7 @@
 
 		return service;
 
-		function getNotifications() {
+		function getNotifications(loadCache) {
 
 			var deferred = $q.defer(),
 				notificationsCache = DSCacheFactory.get('notificationsCache'),
@@ -37,26 +38,25 @@
 				notifications = notificationsCache.get(cacheKey);
 
 			if( notifications )
-			{
-				console.log('Found in Cache');
-				deferred.resolve(notifications);	
-			}
+				deferred.resolve(notifications);
 			else
 			{
-				$ionicLoading.show({ template: 'Loading...'});
+				if( !loadCache )
+					$ionicLoading.show({ template: 'Loading...'});
 
 				$http.get(hostname + 'notifications.json')
 					.success(function(data, status){
-						
 						notificationsCache.put(cacheKey, data);
 						deferred.resolve(data);
 
-						$ionicLoading.hide();
+						if( !loadCache )
+							$ionicLoading.hide();
 					})
 					.error(function(data, status){
 						deferred.reject();
 
-						$ionicLoading.hide();
+						if( !loadCache )
+							$ionicLoading.hide();
 					});
 			}
 
@@ -64,4 +64,4 @@
 		}
 	}
 
-})();
+})()
