@@ -22,6 +22,13 @@
                     templateUrl: "yapp/authentication/terms.html"
                 }
             }
+        }).state("yapp.faq", {
+            url: "/faq",
+            views: {
+                menuContent: {
+                    templateUrl: "yapp/help/faq.html"
+                }
+            }
         });
     }
 })();
