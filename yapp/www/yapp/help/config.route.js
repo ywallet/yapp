@@ -15,6 +15,13 @@
                     templateUrl: "yapp/help/help-menu.html"
                 }
             }
+        }).state("yapp.terms", {
+            url: "/terms",
+            views: {
+                menuContent: {
+                    templateUrl: "yapp/authentication/terms.html"
+                }
+            }
         });
     }
 })();
