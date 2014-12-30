@@ -31,6 +31,7 @@
         'yapp.payments',
         'yapp.savings',
         'yapp.settings',
+        'yapp.help',
         'yapp.account'
     ]);
 })();

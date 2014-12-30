@@ -66,6 +66,10 @@
             <i class="icon fa fa-database"></i> 
             <span class="sidemenu-label">{{ 'savings' | translate}}</span>
         </ion-item>
+        <ion-item ng-class="{actual: isItemActive('help')}" class="item menu-close nav-clear item-icon-left item-positive" ui-sref="yapp.help">
+            <i class="icon fa fa-support"></i>
+            <span class="sidemenu-label">{{ 'help' | translate}}</span>
+        </ion-item>
         <ion-item ng-class="{actual: isItemActive('authentication')}" class="item menu-close nav-clear item-icon-left item-positive" ui-sref="yapp.signout">
             <i class="icon fa fa-power-off"></i>
             <span class="sidemenu-label">{{ 'signout' | translate}}</span>
