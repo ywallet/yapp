@@ -18,13 +18,15 @@
             // automatic login
             /*$rootScope.yUser = {
                 name: "yUser",
+                role: "parent",
                 email: "yUser@yWallet.com"
             };*/
 
             if ($rootScope.yUser != null) {
                 StateRouter.goAndForget("yapp.dashboard");
             } else {
-                StateRouter.goAndForget("authentication.index");
+                // StateRouter.goAndForget("authentication.index");
+                StateRouter.goAndForget("auth");
             }
         }
 	}
