@@ -8,14 +8,10 @@
     </ion-nav-buttons>
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
     <ion-nav-buttons side="right">
-      <div class="fixed-right" ng-controller="Popover">
-        <a ng-click="popover.show($event)" class="navbar-top-links">
-          <i class="fa fa-envelope enlarged"></i>  
-          <span class="count-info badge badge-energized squared">16</span>
-        </a>
+      <div class="fixed-right" style="text-align: right;" ng-controller="Popover">
         <a ng-click="popover.show($event)" class="navbar-top-links">
           <i class="fa fa-bell enlarged"></i>  
-          <span class="count-info badge badge-assertive squared">8</span>
+          <span class="count-info badge badge-assertive squared" ng-if="numNewNotifications > 0">{{numNewNotifications}}</span>
         </a>
       </div>
     </ion-nav-buttons>

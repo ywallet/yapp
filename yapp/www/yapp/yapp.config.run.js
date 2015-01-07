@@ -16,8 +16,8 @@
 		// console.log("$translateProvider initialized");
 	}
 
-    runFunction.$inject = ['$ionicPlatform', 'DSCacheFactory'];
-    function runFunction($ionicPlatform, DSCacheFactory) {
+    runFunction.$inject = ['$ionicPlatform', 'DSCacheFactory', 'DSNotifications'];
+    function runFunction($ionicPlatform, DSCacheFactory, DSNotifications) {
 
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -33,6 +33,9 @@
             // caches for services
             DSCacheFactory('notificationsCache', {storageMode: 'localStorage', maxAge: 5000, deleteOnExpire: 'aggressive'});
             DSCacheFactory('staticCache', {storageMode: 'localStorage'});
+
+            // init rootScope
+            DSNotifications.getNotifications(); //$rootScope.notifications = []; $rootScope.numNewNotifications = 0;            
         });
     }  
 
