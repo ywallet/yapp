@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("Register", Register);
 
-    Register.$inject = ["$scope", "$rootScope", "StateRouter"];
+    Register.$inject = ["$scope", "$rootScope", "StateRouter", "Authenticator"];
 
-    function Register($scope, $rootScope, StateRouter) {
+    function Register($scope, $rootScope, StateRouter, Authenticator) {
         $scope.registerData = {
             email: "",
             password: "",
@@ -28,11 +28,35 @@
             }
             $scope.registerData.password = "";
             $scope.registerData.cpass = "";
+            // TODO request to backend
+            handleResponse();
+        }
+
+        function handleResponse() {
+            Authenticator.authenticate("coinbase", onServiceSuccess, onServiceError);
+        }
+
+
+        function onServiceSuccess(result) {
+            window.localStorage.setItem("access_token", result.access_token);
             $rootScope.yUser = {
                 name: "yUser",
-                email: $scope.registerData.email
+                role: "parent",
+                email: "yUser@email.com"
             };
             StateRouter.goAndForget("yapp.dashboard");
+        }
+
+        function onServiceError(error) {
+            console.log(error);
+            // TODO remove following code, development only
+            onServiceSuccess({
+                "access_token": "...",
+                "refresh_token": "...",
+                "token_type": "bearer",
+                "expire_in": 7200,
+                "scope": "universal"
+            });
         }
     }
 })();
