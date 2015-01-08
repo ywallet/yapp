@@ -10,6 +10,7 @@
          */
          'ionic',
          'angular-data.DSCacheFactory',
+        'ngCordova',
         /*
          * Everybody has access to these.
          * We could place these under every feature area,

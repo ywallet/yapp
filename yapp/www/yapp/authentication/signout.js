@@ -13,6 +13,7 @@
 
         function doSignOut() {
             $rootScope.yUser = null;
+            window.localStorage.removeItem("access_token");
             StateRouter.goAndForget("home");
         }
     }

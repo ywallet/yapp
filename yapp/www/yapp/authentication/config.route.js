@@ -58,7 +58,11 @@
                     controller: "SignOut"
                 }
             }
-        });    	
+        })/*.state("auth", {
+            url: "/auth",
+            templateUrl: "yapp/authentication/authentication.html",
+            controller: "Authenticator"
+        })*/;
     }
 
 })();

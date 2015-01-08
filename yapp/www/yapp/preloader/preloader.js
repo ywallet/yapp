@@ -18,6 +18,7 @@
             // automatic login
             /*$rootScope.yUser = {
                 name: "yUser",
+                role: "parent",
                 email: "yUser@yWallet.com"
             };*/
 
