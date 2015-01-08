@@ -9,7 +9,6 @@
 
     function Register($scope, $rootScope, StateRouter) {
         $scope.registerData = {
-            name: "",
             email: "",
             password: "",
             cpass: "",
@@ -30,7 +29,7 @@
             $scope.registerData.password = "";
             $scope.registerData.cpass = "";
             $rootScope.yUser = {
-                name: $scope.registerData.name,
+                name: "yUser",
                 email: $scope.registerData.email
             };
             StateRouter.goAndForget("yapp.dashboard");
