@@ -25,8 +25,7 @@
             if ($rootScope.yUser != null) {
                 StateRouter.goAndForget("yapp.dashboard");
             } else {
-                // StateRouter.goAndForget("authentication.index");
-                StateRouter.goAndForget("auth");
+                StateRouter.goAndForget("authentication.index");
             }
         }
 	}

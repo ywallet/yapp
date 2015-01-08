@@ -8,7 +8,7 @@
     defineRoutes.$inject = ["$stateProvider"];
 
     function defineRoutes($stateProvider) {
-        $stateProvider/*.state("authentication", {
+        $stateProvider.state("authentication", {
             url: "/authentication",
             abstract: true,
             templateUrl: "yapp/authentication/authentication.html"
@@ -50,7 +50,7 @@
                     templateUrl: "yapp/authentication/terms.html"
                 }
             }
-        })*/.state("yapp.signout", {
+        }).state("yapp.signout", {
             url: "/signout",
             views: {
                 menuContent: {
@@ -58,11 +58,11 @@
                     controller: "SignOut"
                 }
             }
-        }).state("auth", {
+        })/*.state("auth", {
             url: "/auth",
             templateUrl: "yapp/authentication/authentication.html",
             controller: "Authenticator"
-        });    	
+        })*/;
     }
 
 })();
