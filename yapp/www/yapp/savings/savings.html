@@ -1,5 +1,24 @@
 <ion-view title="{{ 'savings' | translate }}">
-	<ion-content class="has-header" padding="true">
-		<h3>{{ 'savings' | translate }}</h3>
+	<ion-content class="has-header">
+		<div class="bar bar-header item-input-inset">
+			<label class="item-input-wrapper">
+				<i class="icon ion-ios7-search placeholder-icon"></i>
+				<input type="search" placeholder="Search" ng-model="searchText">
+			</label>
+		</div>
+		<div class="card" ng-repeat="save in savings | filter: searchText">
+			<div class="item item-divider item-energized">
+				{{save.title}}
+			</div>
+			<a class="item item-text-wrap item-icon-right">
+				{{save.description}}
+				<i class="icon ion-chevron-right icon-accessory"></i>
+			</a>
+			<div class="item item-divider">
+				Data Limite: {{save.deadline | date: 'dd/MM/yyyy'}}
+			</div>			
+		</div>
+		
+		</ion-list>	
 	</ion-content>
 </ion-view>
