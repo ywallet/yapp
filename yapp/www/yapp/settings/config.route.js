@@ -31,22 +31,6 @@
                     templateUrl: "yapp/settings/account/settings-index.html"
                 }
             }
-        }).state("yapp.accountSettings.link", {
-            url: "/link-wallets",
-            views: {
-                accountSettings: {
-                    templateUrl: "yapp/settings/account/link-wallets.html",
-                    controller: "LinkWallets"
-                }
-            }
-        }).state("yapp.accountSettings.wallet", {
-            url: "/register-service",
-            views: {
-                accountSettings: {
-                    templateUrl: "yapp/settings/account/register-service.html",
-                    controller: "RegisterService"
-                }
-            }
         }).state("yapp.accountSettings.personal", {
             url: "/personal-data",
             views: {
@@ -61,6 +45,21 @@
                 accountSettings: {
                     templateUrl: "yapp/settings/account/change-password.html",
                     controller: "ChangePassword"
+                }
+            }
+        }).state("yapp.childrenSettings", {
+            url: "/child-settings",
+            abstract: true,
+            views: {
+                menuContent: {
+                    templateUrl: "yapp/settings/children/settings.html"
+                }
+            }
+        }).state("yapp.childrenSettings.index", {
+            url: "",
+            views: {
+                childrenSettings: {
+                    templateUrl: "yapp/settings/children/settings-index.html"
                 }
             }
         });

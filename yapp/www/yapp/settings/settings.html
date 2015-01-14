@@ -10,6 +10,7 @@
             <button ng-click="changeLanguage('it')" ng-class="curlang=='it' ? 'button button-dark' : 'button'">{{ 'lang_it' | translate }}</button>
             -->
         </div>
+        <a class="button button-block button-assertive" ng-show="isParent" ui-sref="yapp.childrenSettings.index">Children Settings</a>
         <a class="button button-block button-assertive" ui-sref="yapp.accountSettings.index">Account Settings</a>
     </ion-content>
 </ion-view>
