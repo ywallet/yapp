@@ -49,10 +49,26 @@
             }
         }).state("yapp.childrenSettings", {
             url: "/child-settings",
+            abstract: true,
             views: {
                 menuContent: {
-                    templateUrl: "yapp/settings/children/settings.html",
+                    templateUrl: "yapp/settings/children/settings.html"
+                }
+            }
+        }).state("yapp.childrenSettings.index", {
+            url: "",
+            views: {
+                childrenSettings: {
+                    templateUrl: "yapp/settings/children/settings-index.html",
                     controller: "ManageChildren"
+                }
+            }
+        }).state("yapp.childrenSettings.newChild", {
+            url: "/new-child",
+            views: {
+                childrenSettings: {
+                    templateUrl: "yapp/settings/children/register.html",
+                    controller: "RegisterChild"
                 }
             }
         });
