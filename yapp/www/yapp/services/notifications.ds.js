@@ -18,6 +18,36 @@
 
 		return service;
 
+		function getCacheKey() {
+			return cacheKey;
+		}
+
+		function getNotifications() {
+
+			var result = [],
+				notificationsCache = DSCacheFactory.get('staticCache'),
+				notifications = notificationsCache.get(cacheKey);
+
+			if( !$rootScope.notifications )
+			{
+				if( notifications ) {
+					result = notifications;
+
+					$rootScope.numNewNotifications = 0;
+					result.forEach(function(notif) {
+						if( notif.read == false )
+							$rootScope.numNewNotifications++;
+					});
+				}
+				
+				$rootScope.notifications = result;
+			}
+			else
+				result = $rootScope.notifications;
+
+			return result;
+		}
+		
 		function addNotification(type, title, description) {
 
 			var notificationsCache = DSCacheFactory.get('staticCache'),
@@ -54,7 +84,7 @@
 
 			if( notifications.length > 0 && $rootScope.notifications[index] )
 			{
-				id = $rootScope.notifications[index].id;				
+				id = $rootScope.notifications[index].id;
 				notifications.forEach(function(notif) {
 					if(notif.id != id)
 						result.push(notif);
@@ -67,32 +97,6 @@
 				$rootScope.notifications.splice(index, 1);
 				$rootScope.numNewNotifications -= numDeleteNewNotifications;
 			}
-		}
-
-		function getNotifications() {
-
-			var result = [],
-				notificationsCache = DSCacheFactory.get('staticCache'),
-				notifications = notificationsCache.get(cacheKey);
-
-			if( !$rootScope.notifications )
-			{
-				if( notifications ) {
-					result = notifications;
-
-					$rootScope.numNewNotifications = 0;
-					result.forEach(function(notif) {
-						if( notif.read == false )
-							$rootScope.numNewNotifications++;
-					});
-				}
-				
-				$rootScope.notifications = result;
-			}
-			else
-				result = $rootScope.notifications;
-
-			return result;
 		}
 	}
 

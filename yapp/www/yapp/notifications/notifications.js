@@ -14,9 +14,9 @@
         DSNotifications.addNotification('type3', 'title3', 'description3');
         DSNotifications.addNotification('type4', 'title4', 'description4');
         DSNotifications.addNotification('type5', 'title5', 'description5');*/
-
+        
         $scope.rmNotification = function(index) {
-            DSNotifications.rmNotification(index);
+            DSNotifications.rmNotification(index);            
         }
     }
 
