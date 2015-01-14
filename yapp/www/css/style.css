@@ -104,9 +104,9 @@ header.positive {
 }
 
 .yWallet-icon {
-    background-image: url(../img/ionic.png);
-    width: 128px;
-    height: 128px;
+    background-image: url(../img/ywallet_logo_60px.png);
+    width: 60px;
+    height: 60px;
     margin-left: auto;
     margin-right: auto
 }
