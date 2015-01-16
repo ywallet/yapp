@@ -20,6 +20,10 @@
     function runFunction($ionicPlatform, $q, DSCacheFactory, DSNotifications, DSavings) {
 
         $ionicPlatform.ready(function() {
+						setTimeout(function() {
+							$cordovaSplashScreen.hide()
+						}, 5000);
+					
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins.Keyboard) {
