@@ -3,28 +3,28 @@
 		"id": 1, 
 		"title": "Call of Duty",
 		"description": "Novo Call of Duty",
-		"money": 45.69,
-		"deadline": 1420994636687 
+		"qty": 45.69,
+		"deadline": 1420894636687
 	},
 	{
 		"id": 2, 
 		"title": "PES 2015",
 		"description": "Novo PES",
-		"money": 87.69,
+		"qty": 87.69,
 		"deadline": 1420994536687 
 	},
 	{
 		"id": 3, 
 		"title": "Iphone 6",
 		"description": "Apple Iphone 6 64 GB",
-		"money": 679.99,
-		"deadline": 1420994436687 
+		"qty": 679.99,
+		"deadline": 1420794436687 
 	},
 	{
 		"id": 4, 
 		"title": "Nova Era Beach Party 2015",
 		"description": "Festival de Verão",
-		"money": 19.99,
-		"deadline": 1420994336687 
+		"qty": 19.99,
+		"deadline": 1420694336687 
 	}	
 ]
