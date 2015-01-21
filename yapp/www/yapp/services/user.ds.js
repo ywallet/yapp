@@ -28,7 +28,11 @@
 
 
 		function getUser() {
-			return DSCacheFactory.get('staticCache').get(cacheKey);
+			var user = DSCacheFactory.get('staticCache').get(cacheKey);
+            if ($rootScope.yUser == null) {
+                $rootScope.yUser = user;
+            }
+            return user;
 		}
 
 

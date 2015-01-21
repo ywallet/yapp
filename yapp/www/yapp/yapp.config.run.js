@@ -35,8 +35,12 @@
             }
 
             // caches for services
-            DSCacheFactory('localCache', {storageMode: 'localStorage', maxAge: 5000, deleteOnExpire: 'aggressive'});
-            DSCacheFactory('staticCache', {storageMode: 'localStorage'});
+            if (DSCacheFactory.get('localCache') == null) {
+                DSCacheFactory('localCache', {storageMode: 'localStorage', maxAge: 5000, deleteOnExpire: 'aggressive'});
+            }
+            if (DSCacheFactory.get('staticCache') == null) {
+                DSCacheFactory('staticCache', {storageMode: 'localStorage'});
+            }
         });
     }  
 
