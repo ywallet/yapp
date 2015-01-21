@@ -5,15 +5,15 @@
         .module('yapp.authentication')
         .controller('SignOut', SignOut);
 
-    SignOut.$inject = ["$scope", "$rootScope", "StateRouter"];
-    function SignOut($scope, $rootScope, StateRouter) {
+    SignOut.$inject = ["$scope", "StateRouter", "DSUser"];
+    function SignOut($scope, StateRouter, DSUser) {
         $scope.doSignOut = doSignOut;
 
         ////////////////////
 
         function doSignOut() {
-            $rootScope.yUser = null;
-            window.localStorage.removeItem("access_token");
+            DSUser.rmUser();
+            // window.localStorage.removeItem("access_token");
             StateRouter.goAndForget("home");
         }
     }

@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("SignIn", SignIn);
 
-    SignIn.$inject = ["$scope", "$rootScope", "StateRouter"];
+    SignIn.$inject = ["$scope", "StateRouter", "DSUser"];
 
-    function SignIn($scope, $rootScope, StateRouter) {
+    function SignIn($scope, StateRouter, DSUser) {
         $scope.signinData = {
             email: "",
             password: ""
@@ -19,10 +19,10 @@
 
         function doSignIn() {
             $scope.signinData.password = "";
-            $rootScope.yUser = {
+            DSUser.putUser({
                 name: "yUser",
                 email: $scope.signinData.email
-            };
+            });
             StateRouter.goAndForget("yapp.dashboard");
         }
     }

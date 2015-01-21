@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("Register", Register);
 
-    Register.$inject = ["$scope", "$rootScope", "StateRouter", "Authenticator"];
+    Register.$inject = ["$scope", "StateRouter", "Authenticator", "DSUser"];
 
-    function Register($scope, $rootScope, StateRouter, Authenticator) {
+    function Register($scope, StateRouter, Authenticator, DSUser) {
         $scope.registerData = {
             email: "",
             password: "",
@@ -38,12 +38,12 @@
 
 
         function onServiceSuccess(result) {
-            window.localStorage.setItem("access_token", result.access_token);
-            $rootScope.yUser = {
+            DSUser.putUser({
                 name: "yUser",
                 role: "parent",
                 email: "yUser@email.com"
-            };
+            });
+            // window.localStorage.setItem("access_token", result.access_token);
             StateRouter.goAndForget("yapp.dashboard");
         }
 
