@@ -9,7 +9,7 @@
 	function DSavings($http, $q, $ionicLoading, DSCacheFactory)
 	{
 		var cacheKey = 'Savings';
-		var hostname = 'http://localhost:8100/api/';
+		var hostname = (!window.cordova) ? 'api/' : '/android_asset/www/api/';
 
 		var service = {
 			getCacheKey : getCacheKey,
@@ -59,13 +59,12 @@
 			return deferred.promise;
 		}
 		
-		function addSaving(title, description, money, deadline) {
+		function addSaving(title, description, qty, deadline) {
 
 
 		}
 
 		function rmSaving(id) {
-
 
 		}
 	}
