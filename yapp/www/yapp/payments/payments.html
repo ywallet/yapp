@@ -1,5 +1,32 @@
 <ion-view title="{{ 'payments' | translate }}">
-	<ion-content class="has-header" padding="true">
-		<h3>{{ 'payments' | translate }}</h3>
+	<ion-content class="has-header">
+		<ion-list option-buttons="itemButtons" can-swipe="true">
+			<ion-item class="item item-text-wrap item-icon-right" ng-repeat="payment in payments | filter: searchText">
+				<div class="row">
+					<div class="col">
+						{{payment.dateRequest | date: 'dd/MM/yyyy'}} - {{payment.description}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						{{payment.title}}</u>
+					</div>
+					<!-- <div class="col">
+						{{payment.from}}</u>
+					</div>
+					<div class="col">
+						{{payment.to}}</u>
+					</div> -->
+					<div class="col-20">
+						<div class="row">
+							{{payment.amount}} 
+						</div>
+						<div class="row">
+							{{payment.coinUnit}} 
+						</div>
+					</div>
+				</div>
+			</ion-item>	
+		</ion-list>	
 	</ion-content>
 </ion-view>

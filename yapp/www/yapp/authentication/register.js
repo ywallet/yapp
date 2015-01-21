@@ -41,7 +41,14 @@
             DSUser.putUser({
                 name: "yUser",
                 role: "parent",
-                email: "yUser@email.com"
+                email: "yUser@email.com",
+							  token: {
+                	"access_token": "...",
+                	"refresh_token": "...",
+                	"token_type": "bearer",
+                	"expire_in": 7200,
+                	"scope": "universal"
+            		}
             });
             // window.localStorage.setItem("access_token", result.access_token);
             StateRouter.goAndForget("yapp.dashboard");
