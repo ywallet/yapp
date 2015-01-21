@@ -4557,51 +4557,85 @@ angular.module("ngCordova.plugins.oauth", ["ngCordova.plugins.oauthUtility"])
             }
             return deferred.promise;
         },
-			
-			
-			/*
-       * Sign into the Coinbase service
-       *
-       * @param    string clientId
-       * @param    string clientSecret
-       * @return   promise
-       */
-      coinbase: function (clientId, clientSecret) {
-        var deferred = $q.defer();
-        if (window.cordova) {
-          var cordovaMetadata = cordova.require("cordova/plugin_list").metadata;
-          if (cordovaMetadata.hasOwnProperty("org.apache.cordova.inappbrowser") === true) {
-            var browserRef = window.open("https://coinbase.com/oauth/authorize?response_type=code&client_id=" + clientId +  "&redirect_uri=urn:ietf:wg:oauth:2.0:oob", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
-            browserRef.addEventListener("loadstart", function (event) {
-							console.log(event.url);
-              if ((event.url).indexOf("https://www.coinbase.com/oauth/authorize/") === 0) {
-                var requestToken = (event.url).split("/")[5];
-                $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-                $http({
-                  method: "post",
-                  url: "https://coinbase.com/oauth/token",
-                  data: "client_id=" + clientId + "&client_secret=" + clientSecret + "&redirect_uri=urn:ietf:wg:oauth:2.0:oob" + "&grant_type=authorization_code" + "&code=" + requestToken
-                })
-                  .success(function (data) {
-                    deferred.resolve(data);
-                  })
-                  .error(function (data, status) {
-                    deferred.reject("Problem authenticating");
-                  });
-                browserRef.close();
-              }
-            });
-            browserRef.addEventListener('exit', function(event) {
-                deferred.reject("The sign in flow was canceled");
-            });
-          } else {
-            deferred.reject("Could not find InAppBrowser plugin");
-          }
-        } else {
-          deferred.reject("Cannot authenticate via a web browser");
+
+
+        /*
+         * Sign into the Coinbase service
+         *
+         * @param    string clientId
+         * @param    string clientSecret
+         * @return   promise
+         */
+        full_coinbase: function (clientId, clientSecret) {
+            var deferred = $q.defer();
+            if (window.cordova) {
+                var cordovaMetadata = cordova.require("cordova/plugin_list").metadata;
+                if (cordovaMetadata.hasOwnProperty("org.apache.cordova.inappbrowser") === true) {
+                    var browserRef = window.open("https://coinbase.com/oauth/authorize?response_type=code&client_id=" +
+                                                 clientId + "&redirect_uri=urn:ietf:wg:oauth:2.0:oob", "_blank",
+                                                 "location=no,clearsessioncache=yes,clearcache=yes");
+                    browserRef.addEventListener("loadstart", function (event) {
+                        console.log(event.url);
+                        if ((event.url).indexOf("https://www.coinbase.com/oauth/authorize/") === 0) {
+                            var requestToken = (event.url).split("/")[5];
+                            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+                            $http({
+                                method: "post",
+                                url: "https://coinbase.com/oauth/token",
+                                data: "client_id=" + clientId + "&client_secret=" + clientSecret +
+                                        "&redirect_uri=urn:ietf:wg:oauth:2.0:oob" + "&grant_type=authorization_code" + "&code=" + requestToken
+                            })
+                            .success(function (data) {
+                                deferred.resolve(data);
+                            })
+                            .error(function (data, status) {
+                                deferred.reject("Problem authenticating");
+                            });
+                            browserRef.close();
+                        }
+                    });
+                    browserRef.addEventListener('exit', function(event) {
+                        deferred.reject("The sign in flow was canceled");
+                    });
+                } else {
+                    deferred.reject("Could not find InAppBrowser plugin");
+                }
+            } else {
+                deferred.reject("Cannot authenticate via a web browser");
+            }
+            return deferred.promise;
+        },
+
+
+        coinbase: function (clientId) {
+            var deferred = $q.defer();
+            if (window.cordova) {
+                var cordovaMetadata = cordova.require("cordova/plugin_list").metadata;
+                if (cordovaMetadata.hasOwnProperty("org.apache.cordova.inappbrowser") === true) {
+                    var browserRef = window.open("https://coinbase.com/oauth/authorize?response_type=code&client_id=" +
+                                                 clientId + "&redirect_uri=urn:ietf:wg:oauth:2.0:oob", "_blank",
+                                                 "location=no,clearsessioncache=yes,clearcache=yes");
+                    browserRef.addEventListener("loadstart", function (event) {
+                        console.log(event.url);
+                        if ((event.url).indexOf("https://www.coinbase.com/oauth/authorize/") === 0) {
+                            var requestToken = (event.url).split("/")[5];
+                            deferred.resolve(requestToken);
+                        } else {   
+                            deferred.reject("Problem authenticating");
+                        }
+                        browserRef.close();
+                    });
+                    browserRef.addEventListener('exit', function(event) {
+                        deferred.reject("The sign in flow was canceled");
+                    });
+                } else {
+                    deferred.reject("Could not find InAppBrowser plugin");
+                }
+            } else {
+                deferred.reject("Cannot authenticate via a web browser");
+            }
+            return deferred.promise;
         }
-        return deferred.promise;
-      }
 
     };
   }]);
