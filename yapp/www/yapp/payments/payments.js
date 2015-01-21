@@ -5,8 +5,8 @@
 			.module('yapp.payments')
 			.controller('Payments', Payments)
 
- 	Payments.$inject = ['$scope', '$ionicModal', '$cordovaDevice', 'DPayments'];
-	function Payments($scope, $ionicModal, $cordovaDevice, DPayments)
+ 	Payments.$inject = ['$scope', '$ionicModal', '$cordovaDevice', 'DPayments', '$cordovaBarcodeScanner'];
+	function Payments($scope, $ionicModal, $cordovaDevice, DPayments, $cordovaBarcodeScanner)
 	{
 		DPayments.getPayments().then(function(data)
 	 	{
