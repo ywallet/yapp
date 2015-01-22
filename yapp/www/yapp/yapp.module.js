@@ -8,10 +8,11 @@
          * and then when app.dashboard tries to use app.data,
          * it's components are available.
          */
-         'ionic',
-         'angular-data.DSCacheFactory',
+        'ionic',
+        'angular-data.DSCacheFactory',
         'ngCordova',
         'ng-token-auth',
+
         /*
          * Everybody has access to these.
          * We could place these under every feature area,
@@ -23,7 +24,6 @@
         /*
          * Feature areas
          */
-        'yapp.services',
         'yapp.layout',
         'yapp.authentication',
         'yapp.allowances',        
