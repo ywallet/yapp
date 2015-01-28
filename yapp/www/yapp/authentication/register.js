@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("Register", Register);
 
-    Register.$inject = ["$scope", "$http", "StateRouter", "Authenticator", "DSUser"];
+    Register.$inject = ["$scope", "$http", "$auth", "StateRouter", "Authenticator", "DSUser"];
 
-    function Register($scope, $http, StateRouter, Authenticator, DSUser) {
+    function Register($scope, $http, $auth, StateRouter, Authenticator, DSUser) {
         var userData = null;
 
         $scope.registerData = {
@@ -32,25 +32,26 @@
             data = {
                 email: $scope.registerData.email,
                 password: $scope.registerData.password,
+                password_confirmation: $scope.registerData.cpass
                 plan: "FREE"
             };
             $scope.registerData.password = "";
             $scope.registerData.cpass = "";
             // register the user
-            $http.post("https://ywallet.herokuapp.com/managers", data)
-                .success(onRegisterSuccess)
-                .error(onRegisterError);
+            $auth.submitRegistration(data, { config: "manager" })
+                .then(onRegisterSuccess)
+                .catch(onRegisterError);
         }
 
-        function onRegisterSuccess(data, status, headers, config) {
-            userData = data;
+        function onRegisterSuccess(resp) {
+            userData = resp;
             // proceed to coinbase login
             Authenticator.authenticate("coinbase", onServiceSuccess, onServiceError);
         }
 
-        function onRegisterError(data, status, headers, config) {
-            if (data && data.errors) {
-                console.error("register error", data.errors);
+        function onRegisterError(resp) {
+            if (resp && resp.errors) {
+                console.error("register error", resp.errors);
                 StateRouter.goAndForget("authentication.index");
             } else {
                 // TODO development only
@@ -58,7 +59,7 @@
                     name: "yUser",
                     role: "parent",
                     email: "yUser@email.com"
-                }, status, headers, config);
+                });
             }
         }
 
