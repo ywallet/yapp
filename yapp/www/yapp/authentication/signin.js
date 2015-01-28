@@ -30,7 +30,14 @@
 
 
         function onSignInSuccess(resp) {
-            DSUser.putUser(resp.data);
+            resp = resp.data;
+            if (resp.manager_id != null) {
+                resp.role = "parent";
+                resp.children = [];
+            } else {
+                resp.role = "child";
+            }
+            DSUser.putUser(resp);
             StateRouter.goAndForget("yapp.dashboard");
         }
 

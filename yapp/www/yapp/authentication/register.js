@@ -44,6 +44,12 @@
         }
 
         function onRegisterSuccess(resp) {
+            if (resp.manager_id != null) {
+                resp.role = "parent";
+                resp.children = [];
+            } else {
+                resp.role = "child";
+            }
             userData = resp;
             // proceed to coinbase login
             Authenticator.authenticate("coinbase", onServiceSuccess, onServiceError);
@@ -56,9 +62,20 @@
             } else {
                 // TODO development only
                 onRegisterSuccess({
-                    name: "yUser",
-                    role: "parent",
-                    email: "yUser@email.com"
+                    data: {
+                        id:         1,
+                        provider:   "email",
+                        uid:        "teste@teste.com",
+                        name:       "teste",
+                        nickname:   null,
+                        image:      null,
+                        email:      "teste@teste.com",
+                        manager_id: 1,
+                        child_id:   null,
+                        address:    null,
+                        phone:      null,
+                        birthday:   null
+                    }
                 });
             }
         }
