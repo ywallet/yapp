@@ -32,7 +32,7 @@
             data = {
                 email: $scope.registerData.email,
                 password: $scope.registerData.password,
-                password_confirmation: $scope.registerData.cpass
+                password_confirmation: $scope.registerData.cpass,
                 plan: "FREE"
             };
             $scope.registerData.password = "";
