@@ -40,7 +40,7 @@
             $scope.childData.cpass = "";
             // register the user
             // $http.post("https://ywallet.herokuapp.com/children.json", data)
-            $http.post("https://ywalletlinux.cloudapp.net/children.json", data)
+            $http.post("https://ywallet.co/children.json", data)
                 .success(onRegisterSuccess)
                 .error(onRegisterError);
         }
