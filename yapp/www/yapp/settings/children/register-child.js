@@ -33,7 +33,8 @@
                 name: $scope.childData.name,
                 email: $scope.childData.email,
                 password: $scope.childData.password,
-                password_confirmation: $scope.childData.cpass
+                password_confirmation: $scope.childData.cpass,
+                uid: $scope.childData.email
             };
             $scope.childData.password = "";
             $scope.childData.cpass = "";
@@ -44,7 +45,7 @@
         }
 
         function onRegisterSuccess(data, status, headers, config) {
-            
+            // data is an object with child info: id, ...
         }
 
         function onRegisterError(data, status, headers, config) {

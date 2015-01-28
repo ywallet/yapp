@@ -35,7 +35,7 @@
         }
 
         function onSignInError(resp) {
-            if (resp && resp.errors) {
+            if (resp && resp.errors && false) {
                 console.error("error authenticating", resp.errors);
             } else {
                 // TODO development only
