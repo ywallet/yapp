@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("SignIn", SignIn);
 
-    SignIn.$inject = ["$scope", "$http", "StateRouter", "DSUser"];
+    SignIn.$inject = ["$scope", "$auth", "StateRouter", "DSUser"];
 
-    function SignIn($scope, $http, StateRouter, DSUser) {
+    function SignIn($scope, $auth, StateRouter, DSUser) {
         $scope.signinData = {
             email: "",
             password: ""
@@ -23,26 +23,38 @@
                 password: $scope.signinData.password
             };
             $scope.signinData.password = "";
-            $http.post("https://ywallet.herokuapp.com/managers", data)
-                .success(onSignInSuccess)
-                .error(onSignInError);
+            $auth.submitLogin(data)
+                .then(onSignInSuccess)
+                .catch(onSignInError);
         }
 
 
-        function onSignInSuccess(data, status, headers, config) {
-            DSUser.putUser({
-                name: "yUser",
-                email: $scope.signinData.email
-            });
+        function onSignInSuccess(resp) {
+            DSUser.putUser(resp.data);
             StateRouter.goAndForget("yapp.dashboard");
         }
 
-        function onSignInError(data, status, headers, config) {
-            if (data && data.errors) {
-                console.error("error authenticating", data.errors);
+        function onSignInError(resp) {
+            if (resp && resp.errors) {
+                console.error("error authenticating", resp.errors);
             } else {
                 // TODO development only
-                onSignInSuccess(data, status, headers, config);
+                onSignInSuccess({
+                    data: {
+                        id:         1,
+                        provider:   "email",
+                        uid:        "teste@teste.com",
+                        name:       "teste",
+                        nickname:   null,
+                        image:      null,
+                        email:      "teste@teste.com",
+                        manager_id: 1,
+                        child_id:   null,
+                        address:    null,
+                        phone:      null,
+                        birthday:   null
+                    }
+                });
             }
         }
     }
