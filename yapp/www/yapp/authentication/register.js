@@ -30,10 +30,15 @@
                 return;
             }
             data = {
-                email: $scope.registerData.email,
-                password: $scope.registerData.password,
-                password_confirmation: $scope.registerData.cpass,
-                plan: "FREE"
+                manager: {
+                    account_attributes: {
+                        // plan: "FREE"
+                        name: "yUser",
+                        email: $scope.registerData.email,
+                        password: $scope.registerData.password,
+                        password_confirmation: $scope.registerData.cpass
+                    }
+                }
             };
             $scope.registerData.password = "";
             $scope.registerData.cpass = "";

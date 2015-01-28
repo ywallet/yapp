@@ -14,12 +14,12 @@
                 </div>
                 <div class="item item-input item-stacked-label">
                     <label class="input-label">Your Password:</label>
-                    <input type="password" name="userPass" ng-model="registerData.password" required ng-minlength="6" ng-maxlength="24">
+                    <input type="password" name="userPass" ng-model="registerData.password" required ng-minlength="8" ng-maxlength="24">
                     <span class="assertive item-text-wrap" ng-show="registerForm.userPass.$error.required && registerForm.userPass.$dirty">
                         This is required.
                     </span>
                     <span class="assertive item-text-wrap" ng-show="!registerForm.userPass.$error.required && (registerForm.userPass.$error.minlength || registerForm.userPass.$error.maxlength) && registerForm.userPass.$dirty">
-                        A password must be between 6 and 24 characters long.
+                        A password must be between 8 and 24 characters long.
                     </span>
                 </div>
                 <div class="item item-input item-stacked-label">

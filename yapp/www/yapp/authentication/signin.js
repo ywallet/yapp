@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("SignIn", SignIn);
 
-    SignIn.$inject = ["$scope", "$auth", "StateRouter", "DSUser"];
+    SignIn.$inject = ["$scope", "$auth", "StateRouter", "DSUser", "$http"];
 
-    function SignIn($scope, $auth, StateRouter, DSUser) {
+    function SignIn($scope, $auth, StateRouter, DSUser, $http) {
         $scope.signinData = {
             email: "",
             password: ""
@@ -30,7 +30,6 @@
 
 
         function onSignInSuccess(resp) {
-            resp = resp.data;
             if (resp.manager_id != null) {
                 resp.role = "parent";
                 resp.children = [];
@@ -47,20 +46,18 @@
             } else {
                 // TODO development only
                 onSignInSuccess({
-                    data: {
-                        id:         1,
-                        provider:   "email",
-                        uid:        "teste@teste.com",
-                        name:       "teste",
-                        nickname:   null,
-                        image:      null,
-                        email:      "teste@teste.com",
-                        manager_id: 1,
-                        child_id:   null,
-                        address:    null,
-                        phone:      null,
-                        birthday:   null
-                    }
+                    id:         1,
+                    provider:   "email",
+                    uid:        "teste@teste.com",
+                    name:       "teste",
+                    nickname:   null,
+                    image:      null,
+                    email:      "teste@teste.com",
+                    manager_id: 1,
+                    child_id:   null,
+                    address:    null,
+                    phone:      null,
+                    birthday:   null
                 });
             }
         }
