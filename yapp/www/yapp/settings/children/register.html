@@ -26,12 +26,12 @@
                 </div>
                 <div class="item item-input item-stacked-label">
                     <label class="input-label">Child Password:</label>
-                    <input type="password" name="childPass" ng-model="childData.password" required ng-minlength="6" ng-maxlength="24">
+                    <input type="password" name="childPass" ng-model="childData.password" required ng-minlength="8" ng-maxlength="24">
                     <span class="assertive item-text-wrap" ng-show="childForm.childPass.$error.required && childForm.childPass.$dirty">
                         This is required.
                     </span>
                     <span class="assertive item-text-wrap" ng-show="!childForm.childPass.$error.required && (childForm.childPass.$error.minlength || childForm.childPass.$error.maxlength) && childForm.childPass.$dirty">
-                        A password must be between 6 and 24 characters long.
+                        A password must be between 8 and 24 characters long.
                     </span>
                 </div>
                 <div class="item item-input item-stacked-label">

@@ -37,7 +37,14 @@
                 resp.role = "child";
             }
             DSUser.putUser(resp);
-            StateRouter.goAndForget("yapp.dashboard");
+            $http.get("http://ywallet.co/managers")
+                .success(function (data) {
+                    console.log(JSON.stringify(data));
+                    StateRouter.goAndForget("yapp.dashboard");
+                })
+                .error(function (data) {
+                    console.error(data.errors);
+                });
         }
 
         function onSignInError(resp) {

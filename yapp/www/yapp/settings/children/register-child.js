@@ -5,9 +5,9 @@
         .module("yapp.settings")
         .controller("RegisterChild", RegisterChild);
 
-    RegisterChild.$inject = ["$scope", "$http", "StateRouter"];
+    RegisterChild.$inject = ["$scope", "$rootScope", "$http", "StateRouter"];
 
-    function RegisterChild($scope, $http, StateRouter) {
+    function RegisterChild($scope, $rootScope, $http, StateRouter) {
         $scope.childData = {
             name: "",
             email: "",
@@ -30,23 +30,28 @@
                 return;
             }
             data = {
-                name: $scope.childData.name,
-                email: $scope.childData.email,
-                password: $scope.childData.password,
-                password_confirmation: $scope.childData.cpass,
-                uid: $scope.childData.email
+                child: {
+                    //manager_id: $rootScope.yUser.id,
+                    account_attributes: {
+                        name: $scope.childData.name,
+                        email: $scope.childData.email,
+                        password: $scope.childData.password,
+                        password_confirmation: $scope.childData.cpass
+                    }
+                }
             };
             $scope.childData.password = "";
             $scope.childData.cpass = "";
             // register the user
             // $http.post("https://ywallet.herokuapp.com/children.json", data)
-            $http.post("https://ywallet.co/children.json", data)
+            $http.post("http://ywallet.co/children.json", data)
                 .success(onRegisterSuccess)
                 .error(onRegisterError);
         }
 
         function onRegisterSuccess(data, status, headers, config) {
             // data is an object with child info: id, ...
+            console.log("CHILD REGISTER", data);
         }
 
         function onRegisterError(data, status, headers, config) {
