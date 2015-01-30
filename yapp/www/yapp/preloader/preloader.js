@@ -5,23 +5,32 @@
 		.module('yapp')
 		.controller('Preloader', Preloader)
 
-    Preloader.$inject = ["$rootScope", "StateRouter", "DSCacheFactory", "DSUser", "DSNotifications", "DSavings"];
+    Preloader.$inject = ["$rootScope", "$auth", "StateRouter", "DSCacheFactory", "DSUser", "DSNotifications", "DSavings"];
 
-	function Preloader($rootScope, StateRouter, DSCacheFactory, DSUser, DSNotifications, DSavings) {
-        $rootScope.yUser = null;
+	function Preloader($rootScope, $auth, StateRouter, DSCacheFactory, DSUser, DSNotifications, DSavings) {
+        var promise = $rootScope._authPromise || $auth.validateUser();
 
-        detectSession();
+        DSUser.getUser();
+        delete $rootScope._authPromise;
+        promise.then(onSuccess).catch(onFailure);
 
         ////////////////////
 
-        function detectSession() {
-            DSUser.getUser();
-
-            if ($rootScope.yUser != null) {
-                StateRouter.goAndForget("yapp.dashboard");
+        function onSuccess() {
+            if ($rootScope.yUser == null) {
+                // not supposed to happen
+                // happens if you remove the `delete $rootScope._authPromise;` above.
+                console.error("Valid auth but no user.");
+                // get user
             } else {
-                StateRouter.goAndForget("authentication.index");
+                // preloadData();
+                StateRouter.goAndForget("yapp.dashboard");
             }
+        }
+
+        function onFailure(resp) {
+            console.log("no authentication", resp.errors);
+            StateRouter.goAndForget("authentication.index");
         }
 
 

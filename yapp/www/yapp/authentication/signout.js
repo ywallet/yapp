@@ -12,9 +12,7 @@
         ////////////////////
 
         function doSignOut() {
-            $auth.signOut()
-                .then(signOutCallback)
-                .catch(signOutCallback);
+            $auth.signOut().finally(signOutCallback);
         }
 
         function signOutCallback(resp) {

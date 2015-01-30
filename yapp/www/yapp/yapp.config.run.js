@@ -4,8 +4,34 @@
         .module("yapp")
 		.run(runFunction);
 
-    runFunction.$inject = ['$ionicPlatform', '$q', 'DSCacheFactory'];
-    function runFunction($ionicPlatform, $q, DSCacheFactory) {
+    runFunction.$inject = ['$ionicPlatform', '$q', 'DSCacheFactory', '$rootScope', '$auth', 'StateRouter'];
+
+    function runFunction($ionicPlatform, $q, DSCacheFactory, $rootScope, $auth, StateRouter) {
+        $rootScope.$on('auth:validation-success', function() {
+            console.log("VALIDATION SUCCESS", arguments);
+        });
+        $rootScope.$on('auth:login-success', function() {
+            console.log("LOGIN SUCCESS", arguments);
+        });
+        $rootScope.$on('auth:login-error', function() {
+            console.log("LOGIN ERROR", arguments);
+        });
+        $rootScope.$on('auth:registration-email-success', function() {
+            console.log("REGISTRATION SUCCESS", arguments);
+        });
+        $rootScope.$on('auth:registration-email-error', function() {
+            console.log("REGISTRATION ERROR", arguments);
+        });
+
+        $rootScope.$on('auth:validation-error', backToHome);
+        $rootScope.$on('auth:invalid', backToHome);
+        $rootScope.$on('auth:session-expired', backToHome);
+
+        // load user info from local storage
+        // use local storage manually, instead of cache
+        // maybe use resolve in routes to check if there is user info and go to preloader if not
+
+        $rootScope._authPromise = $auth.validateUser();
 
         $ionicPlatform.ready(function() {
 						setTimeout(function() {
@@ -23,6 +49,12 @@
             }
 
             // caches for services
+            /*
+            Creating a new cache clears all saved data from previous runs.
+            Creating a new static cache clears user data from previous run.
+            If you refresh a page with an active session, user data will be lost,
+            but you will keep the auth tokens, which don't use these caches.
+            */
             if (DSCacheFactory.get('localCache') == null) {
                 DSCacheFactory('localCache', {storageMode: 'localStorage', maxAge: 5000, deleteOnExpire: 'aggressive'});
             }
@@ -30,6 +62,11 @@
                 DSCacheFactory('staticCache', {storageMode: 'localStorage'});
             }
         });
-    }  
 
+
+        function backToHome() {
+            console.log("invalid session", arguments);
+            StateRouter.goAndForget("home");
+        }
+    }
 })();

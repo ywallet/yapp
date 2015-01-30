@@ -17,6 +17,8 @@
             agrees: false
         };
 
+        //$scope.$on("auth:registration-email-success", onRegisterSuccess);
+
         $scope.doRegister = doRegister;
 
         ////////////////////
@@ -40,8 +42,8 @@
                     }
                 }
             };
-            $scope.registerData.password = "";
-            $scope.registerData.cpass = "";
+            //$scope.registerData.password = "";
+            //$scope.registerData.cpass = "";
             // register the user
             $auth.submitRegistration(data, { config: "manager" })
                 .then(onRegisterSuccess)
@@ -56,8 +58,12 @@
                 resp.role = "child";
             }
             userData = resp;
-            // proceed to coinbase login
-            Authenticator.authenticate("coinbase", onServiceSuccess, onServiceError);
+            $auth.submitLogin({
+                email: $scope.registerData.email,
+                password: $scope.registerData.password
+            })
+                .then(goToService)
+                .catch(goHome);
         }
 
         function onRegisterError(resp) {
@@ -66,7 +72,7 @@
                 StateRouter.goAndForget("authentication.index");
             } else {
                 // TODO development only
-                onRegisterSuccess({
+                /*onRegisterSuccess({
                     data: {
                         id:         1,
                         provider:   "email",
@@ -81,14 +87,26 @@
                         phone:      null,
                         birthday:   null
                     }
-                });
+                });*/
             }
+        }
+
+
+        function goToService() {
+            // proceed to coinbase login
+            console.log("Redirecting to Coinbase...");
+            Authenticator.authenticate("coinbase", onServiceSuccess, onServiceError);
+        }
+
+        function goHome() {
+            console.error("Validation error after register.");
+            StateRouter.goAndForget("home");
         }
 
 
         function onServiceSuccess(code) {
             // send code to exchange for token
-            $http.post("https://ywallet.herokuapp.com/bitcoin_accounts", {
+            $http.post("http://ywallet.co/bitcoin_accounts", {
                 authentication_code: code
             })
                 .success(onTokenSuccess)

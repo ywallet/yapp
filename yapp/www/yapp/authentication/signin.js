@@ -37,6 +37,7 @@
                 resp.role = "child";
             }
             DSUser.putUser(resp);
+            // {"id":5,"name":"yUser","nickname":null,"email":"a@a","birthday":null,"phone":null,"address":null,"account_id":10,"children_ids":[],"balance":null,"transactions":null,"week_transactions":null}
             $http.get("http://ywallet.co/managers")
                 .success(function (data) {
                     console.log(JSON.stringify(data));
@@ -48,11 +49,11 @@
         }
 
         function onSignInError(resp) {
-            if (resp && resp.errors && false) {
+            if (resp && resp.errors) {
                 console.error("error authenticating", resp.errors);
             } else {
                 // TODO development only
-                onSignInSuccess({
+                /*onSignInSuccess({
                     id:         1,
                     provider:   "email",
                     uid:        "teste@teste.com",
@@ -65,7 +66,7 @@
                     address:    null,
                     phone:      null,
                     birthday:   null
-                });
+                });*/
             }
         }
     }
