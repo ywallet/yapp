@@ -4,33 +4,39 @@
         .module("yapp")
 		.run(runFunction);
 
-    runFunction.$inject = ['$ionicPlatform', '$q', 'DSCacheFactory', '$rootScope', '$auth', 'StateRouter'];
+    runFunction.$inject = ["$ionicPlatform", "$q", "DSCacheFactory", "$rootScope", "$auth", "StateRouter", "DSUser"];
 
-    function runFunction($ionicPlatform, $q, DSCacheFactory, $rootScope, $auth, StateRouter) {
-        $rootScope.$on('auth:validation-success', function() {
+    function runFunction($ionicPlatform, $q, DSCacheFactory, $rootScope, $auth, StateRouter, DSUser) {
+        $rootScope.$on("auth:validation-success", function() {
             console.log("VALIDATION SUCCESS", arguments);
         });
-        $rootScope.$on('auth:login-success', function() {
+        $rootScope.$on("auth:login-success", function() {
             console.log("LOGIN SUCCESS", arguments);
         });
-        $rootScope.$on('auth:login-error', function() {
+        $rootScope.$on("auth:login-error", function() {
             console.log("LOGIN ERROR", arguments);
         });
-        $rootScope.$on('auth:registration-email-success', function() {
+        $rootScope.$on("auth:registration-email-success", function() {
             console.log("REGISTRATION SUCCESS", arguments);
         });
-        $rootScope.$on('auth:registration-email-error', function() {
+        $rootScope.$on("auth:registration-email-error", function() {
             console.log("REGISTRATION ERROR", arguments);
         });
 
-        $rootScope.$on('auth:validation-error', backToHome);
-        $rootScope.$on('auth:invalid', backToHome);
-        $rootScope.$on('auth:session-expired', backToHome);
+        $rootScope.$on("auth:validation-error", backToHome);
+        $rootScope.$on("auth:invalid", backToHome);
+        $rootScope.$on("auth:session-expired", backToHome);
+        $rootScope.$on("auth:logout-success", backToHome);
+        $rootScope.$on("auth:logout-error", backToHome);
 
-        // load user info from local storage
-        // use local storage manually, instead of cache
+        DSUser.getUser();
         // maybe use resolve in routes to check if there is user info and go to preloader if not
 
+        if ($rootScope.yUser) {
+            console.log("USER LOADED");
+        } else {
+            console.log("NO USER");
+        }
         $rootScope._authPromise = $auth.validateUser();
 
         $ionicPlatform.ready(function() {
@@ -55,17 +61,18 @@
             If you refresh a page with an active session, user data will be lost,
             but you will keep the auth tokens, which don't use these caches.
             */
-            if (DSCacheFactory.get('localCache') == null) {
-                DSCacheFactory('localCache', {storageMode: 'localStorage', maxAge: 5000, deleteOnExpire: 'aggressive'});
+            if (DSCacheFactory.get("localCache") == null) {
+                DSCacheFactory("localCache", {storageMode: "localStorage", maxAge: 5000, deleteOnExpire: "aggressive"});
             }
-            if (DSCacheFactory.get('staticCache') == null) {
-                DSCacheFactory('staticCache', {storageMode: 'localStorage'});
+            if (DSCacheFactory.get("staticCache") == null) {
+                DSCacheFactory("staticCache", {storageMode: "localStorage"});
             }
         });
 
 
         function backToHome() {
             console.log("invalid session", arguments);
+            DSUser.rmUser();
             StateRouter.goAndForget("home");
         }
     }

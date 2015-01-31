@@ -40,13 +40,12 @@
                     }
                 }
             };
-            $scope.childData.password = "";
-            $scope.childData.cpass = "";
             // register the user
-            // $http.post("https://ywallet.herokuapp.com/children.json", data)
             $http.post("http://ywallet.co/children.json", data)
                 .success(onRegisterSuccess)
                 .error(onRegisterError);
+            $scope.childData.password = "";
+            $scope.childData.cpass = "";
         }
 
         function onRegisterSuccess(data, status, headers, config) {
@@ -57,7 +56,7 @@
         function onRegisterError(data, status, headers, config) {
             if (data && data.errors) {
                 console.error("register error", data.errors);
-                // StateRouter.goAndForget("authentication.index");
+                StateRouter.goAndForget("yapp.settings");
             } else {
                 // TODO development only
                 onRegisterSuccess({}, null, null, null);

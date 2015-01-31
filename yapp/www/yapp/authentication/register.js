@@ -42,12 +42,12 @@
                     }
                 }
             };
-            //$scope.registerData.password = "";
-            //$scope.registerData.cpass = "";
             // register the user
             $auth.submitRegistration(data, { config: "manager" })
                 .then(onRegisterSuccess)
                 .catch(onRegisterError);
+            $scope.registerData.password = "";
+            $scope.registerData.cpass = "";
         }
 
         function onRegisterSuccess(resp) {

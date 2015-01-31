@@ -22,10 +22,10 @@
                 email: $scope.signinData.email,
                 password: $scope.signinData.password
             };
-            $scope.signinData.password = "";
             $auth.submitLogin(data)
                 .then(onSignInSuccess)
                 .catch(onSignInError);
+            $scope.signinData.password = "";
         }
 
 
@@ -51,6 +51,7 @@
         function onSignInError(resp) {
             if (resp && resp.errors) {
                 console.error("error authenticating", resp.errors);
+                StateRouter.goAndForget("home");
             } else {
                 // TODO development only
                 /*onSignInSuccess({
