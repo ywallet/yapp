@@ -1,14 +1,14 @@
 (function(){
-	'use strict';
+	"use strict";
 
 	angular
-		.module('yapp.services')
-		.factory('DSUser', DSUser);
+		.module("yapp.services")
+		.factory("DSUser", DSUser);
 
-	DSUser.$inject = ['$rootScope', 'DSCacheFactory'];
+	DSUser.$inject = ["$rootScope", "$localStorage"];
 
-	function DSUser($rootScope, DSCacheFactory) {
-		var cacheKey = 'User';
+	function DSUser($rootScope, $localStorage) {
+		var cacheKey = "yUser-cache";
 
 		var service = {
 			putUser: putUser,
@@ -22,13 +22,8 @@
         ////////////////////
 
 
-		function getCacheKey() {
-			return cacheKey;
-		}
-
-
 		function getUser() {
-			var user = DSCacheFactory.get('staticCache').get(cacheKey);
+			var user = $localStorage.getObject(cacheKey);
             if ($rootScope.yUser == null) {
                 $rootScope.yUser = user;
             }
@@ -37,17 +32,13 @@
 
 
 		function putUser(user) {
-			var userCache = DSCacheFactory.get('staticCache');
-
-			userCache.put(cacheKey, user);
+			$localStorage.setObject(cacheKey, user);
 			$rootScope.yUser = user;
 		}
 
 
 		function rmUser() {
-			var userCache = DSCacheFactory.get('staticCache');
-
-			userCache.remove(cacheKey);
+			$localStorage.setObject(cacheKey, null);
             $rootScope.yUser = null;
 		}
 	}
