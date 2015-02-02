@@ -8,8 +8,7 @@
     Register.$inject = ["$scope", "$http", "$auth", "StateRouter", "Authenticator", "DSUser"];
 
     function Register($scope, $http, $auth, StateRouter, Authenticator, DSUser) {
-        var userData = null;
-
+        $scope.blocked = false;
         $scope.registerData = {
             email: "",
             password: "",
@@ -46,49 +45,31 @@
             $auth.submitRegistration(data, { config: "manager" })
                 .then(onRegisterSuccess)
                 .catch(onRegisterError);
-            $scope.registerData.password = "";
-            $scope.registerData.cpass = "";
+            $scope.blocked = true;
         }
 
         function onRegisterSuccess(resp) {
-            if (resp.manager_id != null) {
+            resp = resp.data;
+            console.log("REGISTERED", resp);
+            if (resp.children_ids != null) {
                 resp.role = "parent";
                 resp.children = [];
             } else {
                 resp.role = "child";
             }
-            userData = resp;
-            $auth.submitLogin({
+            DSUser.putUser(resp);
+            goToService();
+            /*DSUser.auth = $auth.submitLogin({
                 email: $scope.registerData.email,
                 password: $scope.registerData.password
             })
-                .then(goToService)
-                .catch(goHome);
+                .then(goToService);*/
+                //.catch(goHome);
         }
 
         function onRegisterError(resp) {
-            if (resp && resp.errors) {
-                console.error("register error", resp.errors);
-                StateRouter.goAndForget("authentication.index");
-            } else {
-                // TODO development only
-                /*onRegisterSuccess({
-                    data: {
-                        id:         1,
-                        provider:   "email",
-                        uid:        "teste@teste.com",
-                        name:       "teste",
-                        nickname:   null,
-                        image:      null,
-                        email:      "teste@teste.com",
-                        manager_id: 1,
-                        child_id:   null,
-                        address:    null,
-                        phone:      null,
-                        birthday:   null
-                    }
-                });*/
-            }
+            console.error("register error", resp);
+            StateRouter.goAndForget("authentication.index");
         }
 
 
@@ -99,7 +80,7 @@
         }
 
         function goHome() {
-            console.error("Validation error after register.");
+            // console.error("Validation error after register.");
             StateRouter.goAndForget("home");
         }
 
@@ -114,33 +95,25 @@
         }
 
         function onServiceError(error) {
+            // normal behaviour:
             console.error(error);
+            // goHome();
+
             // TODO remove following code, development only
             onTokenSuccess(null, null, null, null);
         }
 
 
         function onTokenSuccess(data, status, headers, config) {
-            DSUser.putUser(userData);
-            // window.localStorage.setItem("access_token", result.access_token);
-            $http.get("http://ywallet.co/managers")
-                .success(function (data) {
-                    console.log(JSON.stringify(data));
-                    StateRouter.goAndForget("yapp.dashboard");
-                })
-                .error(function (data) {
-                    console.error(data.errors);
-                });
+            DSUser.auth = $auth.submitLogin({
+                email: $scope.registerData.email,
+                password: $scope.registerData.password
+            }).then(goHome, goHome);
         }
 
         function onTokenError(data, status, headers, config) {
-            if (data && data.errors) {
-                console.error("token exchange error", data.errors);
-                StateRouter.goAndForget("authentication.index");
-            } else {
-                // TODO development only
-                onTokenSuccess(null, status, headers, config);
-            }
+            console.error("token exchange error", data);
+            StateRouter.goAndForget("authentication.index");
         }
     }
 })();

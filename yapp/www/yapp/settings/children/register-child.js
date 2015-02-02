@@ -8,6 +8,7 @@
     RegisterChild.$inject = ["$scope", "$rootScope", "$http", "StateRouter"];
 
     function RegisterChild($scope, $rootScope, $http, StateRouter) {
+        $scope.blocked = false;
         $scope.childData = {
             name: "",
             email: "",
@@ -44,8 +45,7 @@
             $http.post("http://ywallet.co/children.json", data)
                 .success(onRegisterSuccess)
                 .error(onRegisterError);
-            $scope.childData.password = "";
-            $scope.childData.cpass = "";
+            $scope.blocked = true;
         }
 
         function onRegisterSuccess(data, status, headers, config) {

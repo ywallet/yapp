@@ -4,41 +4,9 @@
         .module("yapp")
 		.run(runFunction);
 
-    runFunction.$inject = ["$ionicPlatform", "$q", "DSCacheFactory", "$rootScope", "$auth", "StateRouter", "DSUser"];
+    runFunction.$inject = ["$ionicPlatform", "$q", "DSCacheFactory"];
 
-    function runFunction($ionicPlatform, $q, DSCacheFactory, $rootScope, $auth, StateRouter, DSUser) {
-        $rootScope.$on("auth:validation-success", function() {
-            console.log("VALIDATION SUCCESS", arguments);
-        });
-        $rootScope.$on("auth:login-success", function() {
-            console.log("LOGIN SUCCESS", arguments);
-        });
-        $rootScope.$on("auth:login-error", function() {
-            console.log("LOGIN ERROR", arguments);
-        });
-        $rootScope.$on("auth:registration-email-success", function() {
-            console.log("REGISTRATION SUCCESS", arguments);
-        });
-        $rootScope.$on("auth:registration-email-error", function() {
-            console.log("REGISTRATION ERROR", arguments);
-        });
-
-        $rootScope.$on("auth:validation-error", backToHome);
-        $rootScope.$on("auth:invalid", backToHome);
-        $rootScope.$on("auth:session-expired", backToHome);
-        $rootScope.$on("auth:logout-success", backToHome);
-        $rootScope.$on("auth:logout-error", backToHome);
-
-        DSUser.getUser();
-        // maybe use resolve in routes to check if there is user info and go to preloader if not
-
-        if ($rootScope.yUser) {
-            console.log("USER LOADED");
-        } else {
-            console.log("NO USER");
-        }
-        $rootScope._authPromise = $auth.validateUser();
-
+    function runFunction($ionicPlatform, $q, DSCacheFactory) {
         $ionicPlatform.ready(function() {
 						setTimeout(function() {
 							$cordovaSplashScreen.hide()
@@ -68,12 +36,5 @@
                 DSCacheFactory("staticCache", {storageMode: "localStorage"});
             }
         });
-
-
-        function backToHome() {
-            console.log("invalid session", arguments);
-            DSUser.rmUser();
-            StateRouter.goAndForget("home");
-        }
     }
 })();
