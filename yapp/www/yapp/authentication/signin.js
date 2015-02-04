@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("SignIn", SignIn);
 
-    SignIn.$inject = ["$scope", "$auth", "StateRouter", "DSUser"];
+    SignIn.$inject = ["$scope", "$auth", "StateRouter", "DSUser", "$q"];
 
-    function SignIn($scope, $auth, StateRouter, DSUser) {
+    function SignIn($scope, $auth, StateRouter, DSUser, $q) {
         $scope.blocked = false;
         $scope.signinData = {
             email: "",
@@ -41,6 +41,7 @@
         function onSignInError(resp) {
             console.error("error authenticating", resp);
             StateRouter.goAndForget("home");
+            return $q.reject("error authenticating");
         }
     }
 })();

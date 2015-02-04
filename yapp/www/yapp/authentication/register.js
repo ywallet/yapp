@@ -5,9 +5,9 @@
         .module("yapp.authentication")
         .controller("Register", Register);
 
-    Register.$inject = ["$scope", "$http", "$auth", "StateRouter", "Authenticator", "DSUser"];
+    Register.$inject = ["$scope", "$http", "$auth", "StateRouter", "Authenticator", "DSUser", "$q"];
 
-    function Register($scope, $http, $auth, StateRouter, Authenticator, DSUser) {
+    function Register($scope, $http, $auth, StateRouter, Authenticator, DSUser, $q) {
         $scope.blocked = false;
         $scope.registerData = {
             email: "",
@@ -108,7 +108,10 @@
             DSUser.auth = $auth.submitLogin({
                 email: $scope.registerData.email,
                 password: $scope.registerData.password
-            }).then(goHome, goHome);
+            }).then(goHome, function () {
+                goHome();
+                return $q.reject("error authenticating");
+            });
         }
 
         function onTokenError(data, status, headers, config) {
