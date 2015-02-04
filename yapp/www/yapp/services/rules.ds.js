@@ -3,20 +3,19 @@
 
 	angular
 		.module('yapp.services')
-		.factory('DSavings', DSavings);
+		.factory('DSRules', DSRules);
 
-	DSavings.$inject = ['$http', '$q', '$ionicLoading', 'DSCacheFactory'];
-	function DSavings($http, $q, $ionicLoading, DSCacheFactory)
+	DSRules.$inject = ['$http', '$q', '$ionicLoading', 'DSCacheFactory'];
+	function DSRules($http, $q, $ionicLoading, DSCacheFactory)
 	{
-		var cacheKey = 'Savings';
+		var cacheKey = 'Rules';
 		var hostname = (!window.cordova) ? 'api/' : '/android_asset/www/api/';
-		//var hostname = 'http://ywallet.co/';
 
 		var service = {
 			getCacheKey : getCacheKey,
-			addSaving: addSaving,
-			rmSaving: rmSaving,
-			getSavings: getSavings
+			addRule: addRule,
+			rmRule: rmRule,
+			getRules: getRules
 		}
 
 		return service;
@@ -25,25 +24,25 @@
 			return cacheKey;
 		}
 
-		function getSavings(loadCache) {
+		function getRules(loadCache) {
 
 			var deferred = $q.defer(),
-				savingsCache = DSCacheFactory.get('localCache'),
-				savings = savingsCache.get(cacheKey);
+				rulesCache = DSCacheFactory.get('localCache'),
+				rules = rulesCache.get(cacheKey);
 
 			if( loadCache === undefined )
 				var loadCache = false;
 
-			if( savings )
-				deferred.resolve(savings);
+			if( rules )
+				deferred.resolve(rules);
 			else
 			{
 				if( !loadCache )
 					$ionicLoading.show({ template: 'Loading...'});
 
-				$http.get(hostname + 'savings.json')
+				$http.get(hostname + 'rules.json')
 					.success(function(data, status){
-						savingsCache.put(cacheKey, data);
+						rulesCache.put(cacheKey, data);
 						deferred.resolve(data);
 
 						if( !loadCache )
@@ -60,14 +59,14 @@
 			return deferred.promise;
 		}
 		
-		function addSaving(title, description, qty, deadline) {
+		function addRule(qty, period, active) {
 			var deferred = $q.defer();
 			deferred.resolve(10);
 
 			return deferred.promise;
 		}
 
-		function rmSaving(id) {
+		function rmRule(id) {
 
 		}
 	}
