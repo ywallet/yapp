@@ -20,7 +20,6 @@
 				scope: $scope
 			}).then(function(modal) {
 				$scope.modal = modal;
-				$scope.modal.show();
 			});
 
 			$scope.openAddSaving = function() {
@@ -32,9 +31,21 @@
 			};
 
 			$scope.addSaving = function() {
-				console.log('Doing login', $scope.savingData);
 
-				$scope.closeAddSaving();
+				DSavings.addSaving($scope.savingData.title, $scope.savingData.description, $scope.savingData.qty, $scope.savingData.deadline).then(function(data){
+
+					$scope.savings.push(	{
+						"id": data.id, 
+						"title": $scope.savingData.title,
+						"description": $scope.savingData.description,
+						"qty": $scope.savingData.qty,
+						"deadline": $scope.savingData.deadline 
+					});
+
+					$scope.savingData = {};
+					$scope.closeAddSaving();
+
+				});
 			};
 
 			// Remove Saving
