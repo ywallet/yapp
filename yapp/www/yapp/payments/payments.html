@@ -49,12 +49,12 @@
 		<ion-tab title="Pagar" icon-on="icon fa fa-camera" icon-off="icon fa fa-camera">
 			<ion-content has-header="true" padding="true">
 					<h2>Efectuar pagamento</h2>
-					 <form name="paymentForm" ng-submit="doPayment()" novalidate>
+					 <form name="paymentForm" ng-submit="doPayment()" >
             <fieldset ng-disable="blocked">
                 <div class="list">
                     <div class="item item-input item-stacked-label">
                         <label class="input-label">Endereço bitcoin de destino:</label>
-                        <input type="text" name="paymentForm.to" ng-model="paymentForm.to" required>
+                        <input type="text" name="to" ng-model="paymentData.to" required minlength="34" maxlength="34">
                         <span class="assertive item-text-wrap" ng-show="paymentForm.to.$error.required && paymentForm.to.$dirty">
                             This is required.
                         </span>
@@ -64,14 +64,11 @@
                     </div>
                     <div class="item item-input item-stacked-label">
                         <label class="input-label">Montante:</label>
-                        <input type="number" name="amount" ng-model="paymentForm.amount" maxlength="24">
+                        <input type="number" name="amount" ng-model="paymentData.amount" required >
                     </div>
                     <div class="item item-input item-stacked-label">
                         <label class="input-label">Notas</label>
-                        <input type="text" name="amount" ng-model="paymentForm.note" maxlength="200">
-                        <span class="assertive item-text-wrap" ng-show="paymentForm.note.$dirty">
-                            This is required.
-                        </span>
+                        <input type="text" name="note" ng-model="paymentData.note" maxlength="200">
                     </div>
                 </div>
                 <button class="button button-block button-positive" ng-click="scanBarcode()"><i class="icon fa fa-camera"></i></button>
