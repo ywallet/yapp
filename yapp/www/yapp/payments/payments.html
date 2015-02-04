@@ -1,40 +1,10 @@
 <ion-view title="{{ 'payments' | translate }}">
 	<ion-tabs class="tabs-positive tabs-icon-only">
 		<ion-tab title="Listagem" icon-on="icon fa fa-exchange" icon-off="icon fa fa-exchange">
+		
+		
 			<!-- Tab 1 content -->
 			<ion-content class="has-header" padding="true">
-			<!--
-				<ion-list option-buttons="itemButtons" can-swipe="true">
-					<ion-item class="item item-text-wrap item-icon-right" ng-repeat="payment in payments | filter: searchText">
-						<li class="list-group-item fist-item">
-								<span class="pull-right">
-										{{payment.dateRequest | date: 'dd/MM/yyyy'}}
-								</span>
-								<span class="label label-success">{{ payment.id }}</span> {{payment.description}}
-						</li>
-
-						<div class="row">
-							<div class="col">
-								{{payment.dateRequest | date: 'dd/MM/yyyy'}} - 
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								{{payment.title}}</u>
-							</div>
-
-							<div class="col-20">
-								<div class="row">
-									{{payment.amount}} 
-								</div>
-								<div class="row">
-									{{payment.coinUnit}} 
-								</div>
-							</div>
-						</div>
-					</ion-item>	
-				</ion-list>	
-				-->
 				<table class="table table-hover margin bottom">
 					<thead>
 						<tr>
@@ -57,18 +27,58 @@
 				</table>
 			</ion-tab>
 		</ion-content>
+		
+		
 		<ion-tab title="Receber" icon-on="icon fa fa-qrcode" icon-off="icon fa fa-qrcode">
 			<ion-content has-header="true" padding="true">
-				<h2>Recebe r</h2>
-				ler imagem qr ou gera-la a partir do endereço bitcoin (provavlemnte escolhe carteira onde prentende receber pagamento
-				e depois tem qr para essa carteira.	
+				<h2>Receber pagamento</h2>
+				
+				<div class="row row-center">
+					<div class="col"></div>
+					<div class="col"><img src="/www/img/qr.png" /></div>
+					<div class="col"></div>
+				</div>
+				<div class="row row-center">
+					<div class="col">1HeN2AfTEwkN9T4jXzmuwDFdcmxZRamhhV</div>
+				</div>
+				
 			</ion-content>
 		</ion-tab>
+		
+
 		<ion-tab title="Pagar" icon-on="icon fa fa-camera" icon-off="icon fa fa-camera">
 			<ion-content has-header="true" padding="true">
-					<h2>Paga r</h2>
-					emite pagamento apos leitura de qrcode
-					<button ng-click="scanBarcode()">Ler QrCode</button>
+					<h2>Efectuar pagamento</h2>
+					 <form name="paymentForm" ng-submit="doPayment()" novalidate>
+            <fieldset ng-disable="blocked">
+                <div class="list">
+                    <div class="item item-input item-stacked-label">
+                        <label class="input-label">Endereço bitcoin de destino:</label>
+                        <input type="text" name="paymentForm.to" ng-model="paymentForm.to" required>
+                        <span class="assertive item-text-wrap" ng-show="paymentForm.to.$error.required && paymentForm.to.$dirty">
+                            This is required.
+                        </span>
+                        <span class="assertive item-text-wrap" ng-show="!paymentForm.to.$error.required && paymentForm.to.$dirty && paymentForm.to.$error.to">
+                            That isn't a valid bitcoin address.
+                        </span>
+                    </div>
+                    <div class="item item-input item-stacked-label">
+                        <label class="input-label">Montante:</label>
+                        <input type="number" name="amount" ng-model="paymentForm.amount" maxlength="24">
+                    </div>
+                    <div class="item item-input item-stacked-label">
+                        <label class="input-label">Notas</label>
+                        <input type="text" name="amount" ng-model="paymentForm.note" maxlength="200">
+                        <span class="assertive item-text-wrap" ng-show="paymentForm.note.$dirty">
+                            This is required.
+                        </span>
+                    </div>
+                </div>
+                <button class="button button-block button-positive" ng-click="scanBarcode()"><i class="icon fa fa-camera"></i></button>
+                <button type="submit" class="button button-block button-positive" ng-disabled="blocked || paymentForm.$invalid">Efectuar pagamento</button>
+            </fieldset>
+        </form>
+				
 			</ion-content>
 		</ion-tab>
 	</ion-tabs>
