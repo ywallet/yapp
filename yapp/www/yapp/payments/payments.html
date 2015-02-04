@@ -1,37 +1,36 @@
 <ion-view title="{{ 'payments' | translate }}">
 	<ion-tabs class="tabs-positive tabs-icon-only">
-		<ion-tab title="Listagem" icon-on="icon fa fa-exchange" icon-off="icon fa fa-exchange">
-		
+		<ion-tab title="{{ 'listing' | translate }}" icon-on="icon fa fa-exchange" icon-off="icon fa fa-exchange">
 		
 			<!-- Tab 1 content -->
 			<ion-content class="has-header" padding="true">
 				<table class="table table-hover margin bottom">
 					<thead>
 						<tr>
-								<th class="text-center" style="width: 1%">No.</th>
-								<th>Transaction</th>
-								<th class="text-center">Date</th>
-								<th class="text-center">Amount</th>
+								<th class="text-center" style="width: 1%">{{ 'abrev_number' | translate }}.</th>
+								<th>{{ 'transaction' | translate }}</th>
+								<th class="text-center">{{ 'date' | translate }}</th>
+								<th class="text-center">{{ 'amount' | translate }}</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="payment in payments | filter: searchText" style="line-height: 40px; border-top-color: #e7eaec; border-top-style: solid; padding: 8px;">
 								<td class="text-center">{{ payment.id }}</td>
-								<td> {{payment.title}}
+								<td> {{ payment.title }}
 										</td>
-								<td class="text-center small">{{payment.dateRequest | date: 'MMM d, y'}}</td>
+								<td class="text-center small">{{ payment.dateRequest | date: 'MMM d, y'}}</td>
 								<td class="text-center">
-									<span class="money badge badge-assertive squared">{{payment.amount | currency }}</span></td>
+									<span class="money badge badge-assertive squared">{{ payment.amount | currency }}</span></td>
 						</tr>
 					</tbody>
 				</table>
 			</ion-tab>
 		</ion-content>
 		
-		
+		<!-- Tab 2 content -->
 		<ion-tab title="Receber" icon-on="icon fa fa-qrcode" icon-off="icon fa fa-qrcode">
 			<ion-content has-header="true" padding="true">
-				<h2>Receber pagamento</h2>
+				<h2>{{ 'receive_payments' | translate }}</h2>
 				
 				<div class="row row-center">
 					<div class="col"></div>
@@ -39,40 +38,40 @@
 					<div class="col"></div>
 				</div>
 				<div class="row row-center">
-					<div class="col">1HeN2AfTEwkN9T4jXzmuwDFdcmxZRamhhV</div>
+					<div class="col">{{ myBitcoinAddress }}</div>
 				</div>
 				
 			</ion-content>
 		</ion-tab>
 		
-
+		<!-- Tab 3 content -->
 		<ion-tab title="Pagar" icon-on="icon fa fa-camera" icon-off="icon fa fa-camera">
 			<ion-content has-header="true" padding="true">
-					<h2>Efectuar pagamento</h2>
+					<h2>{{ 'make_a_payment' | translate }}</h2>
 					 <form name="paymentForm" ng-submit="doPayment()" >
             <fieldset ng-disable="blocked">
                 <div class="list">
                     <div class="item item-input item-stacked-label">
-                        <label class="input-label">Endereço bitcoin de destino:</label>
-                        <input type="text" name="to" ng-model="paymentData.to" required minlength="34" maxlength="34">
-                        <span class="assertive item-text-wrap" ng-show="paymentForm.to.$error.required && paymentForm.to.$dirty">
-                            This is required.
+                        <label class="input-label">{{ 'destination_bitcoin_address' | translate }}</label>
+                        <input type="text" name="to" ng-model="paymentData.to" required ng-minlength="34">
+                        <span class="assertive item-text-wrap" ng-show="paymentForm.to.$error.required">
+                            {{ 'this_is_required' | translate }}.
                         </span>
-                        <span class="assertive item-text-wrap" ng-show="!paymentForm.to.$error.required && paymentForm.to.$dirty && paymentForm.to.$error.to">
-                            That isn't a valid bitcoin address.
+                        <span class="assertive item-text-wrap" ng-show="!paymentForm.to.$error.required && paymentForm.to.$minlength">
+                            {{ 'this_is_not_a_valid_bitcoin_address' | translate }}.
                         </span>
                     </div>
                     <div class="item item-input item-stacked-label">
-                        <label class="input-label">Montante:</label>
-                        <input type="number" name="amount" ng-model="paymentData.amount" required >
+                        <label class="input-label">{{ 'amount' | translate }}</label>
+                        <input type="number" name="amount" ng-model="paymentData.amount" step="any" required >
                     </div>
                     <div class="item item-input item-stacked-label">
-                        <label class="input-label">Notas</label>
+                        <label class="input-label">{{ 'notes' | translate }}</label>
                         <input type="text" name="note" ng-model="paymentData.note" maxlength="200">
                     </div>
                 </div>
                 <button class="button button-block button-positive" ng-click="scanBarcode()"><i class="icon fa fa-camera"></i></button>
-                <button type="submit" class="button button-block button-positive" ng-disabled="blocked || paymentForm.$invalid">Efectuar pagamento</button>
+                <button type="submit" class="button button-block button-positive" ng-disabled="blocked || paymentForm.$invalid">{{ 'make_a_payment' | translate }}</button>
             </fieldset>
         </form>
 				
