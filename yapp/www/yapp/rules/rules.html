@@ -11,7 +11,7 @@
 		    <ion-item class="item item-icon-right" style="border-bottom: 1px solid #1ab394" ng-repeat="rule in rules | filter: searchText">
 		    	<div class="row">
 					<div class="col"><h2>{{ 'period' | translate }}: {{rule.period}}</h2></div>
-					<div class="col"><p>{{ 'money' | translate }}: {{rule.qty | number:2}} €</p></div>
+					<div class="col"><p>{{ 'money' | translate }}: {{rule.qty | currency}}</p></div>
 					<div class="col-10" ng-if="rule.active == 'false'" style="color:red;">{{ 'desactivate_status' | translate }}</div>
 					<div class="col-10" ng-if="rule.active == 'true'" style="color:green;">{{ 'activate_status' | translate }}</h2></div>
 				</div>
