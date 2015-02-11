@@ -59,12 +59,46 @@
             var role = yUser.role,
                 url = role == "parent" ? "/managers" : "/children";
             $http.get("http://ywallet.co" + url)
-                .success(function (data) {
-                    data.role = role;
-                    putUser(data);
-                    onSuccess.apply(this, arguments);
-                })
-                .error(onError);
+            .success(function (data) {
+                var i, len, counter = 0;
+                data.role = role;
+                if (role == "parent" && data.children == null) {
+                    data.children = [];
+                    for (i = 0, len = data.children_ids.length; i < len; ++i) {
+                        data.children.push({
+                            id: data.children_ids[i],
+                            name: "???"
+                        });
+                        (function (k, id) {
+                            $http.get("http://ywallet.co/children/" + id)
+                            .success(function (child_data) {
+                                data.children[k].name = child_data.name;
+                                ++counter;
+                                if (counter === len) {
+                                    putUser(data);
+                                    onSuccess(data);
+                                }
+                            })
+                            .error(function (error_data) {
+                                console.error("error fetching child info", error_data);
+                                ++counter;
+                                if (counter === len) {
+                                    putUser(data);
+                                    onSuccess(data);
+                                }
+                            });
+                        })(i, data.children_ids[i]);
+                    }
+                }
+                // putUser(data);
+                // onSuccess.apply(this, arguments);
+            })
+            .error(onError);
+        }
+
+
+        function getChild(child_id, data, onSuccess, onError) {
+            
         }
 	}
 

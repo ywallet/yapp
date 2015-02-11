@@ -8,11 +8,7 @@
     ManageChildren.$inject = ["$scope", "$rootScope"];
 
     function ManageChildren($scope, $rootScope) {
-        $scope.children = $rootScope.yUser.children || [{
-            name: "Joãozinho"
-        }, {
-            name: "Maria"
-        }];
+        $scope.children = $rootScope.yUser.children;
 
         $scope.rmChild = rmChild;
 
