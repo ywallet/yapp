@@ -89,9 +89,14 @@
                             });
                         })(i, data.children_ids[i]);
                     }
+                    if (len == 0) {
+                        putUser(data);
+                        onSuccess(data);
+                    }
+                } else { 
+                    putUser(data);
+                    onSuccess(data);
                 }
-                // putUser(data);
-                // onSuccess.apply(this, arguments);
             })
             .error(onError);
         }
