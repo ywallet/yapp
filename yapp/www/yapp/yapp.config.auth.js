@@ -11,7 +11,7 @@
         $httpProvider.defaults.useXDomain = true;
 
         // var apiUrl = "https://ywallet.herokuapp.com";
-        var apiUrl = "http://ywallet.co";
+        var apiUrl = "https://ywallet.co";
 
         $authProvider.configure([{
             default: {

@@ -90,7 +90,7 @@
 
         function onServiceSuccess(code) {
             // send code to exchange for token
-            $http.post("http://ywallet.co/bitcoin_accounts", {
+            $http.post("https://ywallet.co/bitcoin_accounts", {
                 authentication_code: code
             })
                 .success(goHome)

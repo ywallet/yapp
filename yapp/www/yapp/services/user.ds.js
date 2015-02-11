@@ -5,9 +5,9 @@
 		.module("yapp.services")
 		.factory("DSUser", DSUser);
 
-	DSUser.$inject = ["$rootScope", "$localStorage", "$http"];
+	DSUser.$inject = ["$rootScope", "$localStorage", "$http", "BASE_ADDRESS"];
 
-	function DSUser($rootScope, $localStorage, $http) {
+	function DSUser($rootScope, $localStorage, $http, BASE_ADDRESS) {
 		var yUser = null,
             cacheKey = "yUser-cache";
 
@@ -58,7 +58,7 @@
         function updateUser(onSuccess, onError) {
             var role = yUser.role,
                 url = role == "parent" ? "/managers" : "/children";
-            $http.get("http://ywallet.co" + url)
+            $http.get(BASE_ADDRESS + url)
                 .success(function (data) {
                     data.role = role;
                     putUser(data);
