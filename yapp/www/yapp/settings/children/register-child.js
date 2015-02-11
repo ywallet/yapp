@@ -42,7 +42,7 @@
                 }
             };
             // register the user
-            $http.post("http://ywallet.co/children", data)
+            $http.post("https://ywallet.co/children", data)
                 .success(onRegisterSuccess)
                 .error(onRegisterError);
             $scope.blocked = true;
