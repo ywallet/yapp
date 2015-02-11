@@ -41,8 +41,8 @@
                     $rootScope.activeChild = id;
                 }
             } else {
-                $rootScope.activeName = user.name;
-                $rootScope.activeEmail = user.email;
+                $rootScope.activeName = $rootScope.yUser.name;
+                $rootScope.activeEmail = $rootScope.yUser.email;
                 $rootScope.activeChild = undefined;
             }
 
