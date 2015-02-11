@@ -70,7 +70,7 @@
                             name: "???"
                         });
                         (function (k, id) {
-                            $http.get("http://ywallet.co/children/" + id)
+                            $http.get("https://ywallet.co/children/" + id)
                             .success(function (child_data) {
                                 data.children[k].name = child_data.name;
                                 ++counter;
