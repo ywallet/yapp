@@ -5,9 +5,9 @@
         .module("yapp.settings")
         .controller("RegisterChild", RegisterChild);
 
-    RegisterChild.$inject = ["$scope", "$rootScope", "$http", "StateRouter"];
+    RegisterChild.$inject = ["$scope", "$rootScope", "$http", "StateRouter", "DSUser"];
 
-    function RegisterChild($scope, $rootScope, $http, StateRouter) {
+    function RegisterChild($scope, $rootScope, $http, StateRouter, DSUser) {
         $scope.blocked = false;
         $scope.childData = {
             name: "",
@@ -49,18 +49,24 @@
         }
 
         function onRegisterSuccess(data, status, headers, config) {
+            var i, len, user = $rootScope.yUser;
             // data is an object with child info: id, ...
             console.log("CHILD REGISTER", data);
+            for (i = 0, len = user.children.length; i < len; ++i) {
+                if (user.children[i].id === data.id) {
+                    user.children.name = data.name;
+                    break;
+                }
+            }
+            DSUser.putUser(user);
+            StateRouter.goAndForget("yapp.childrenSettings.index");
         }
 
         function onRegisterError(data, status, headers, config) {
             if (data && data.errors) {
                 console.error("register error", data.errors);
-                StateRouter.goAndForget("yapp.settings");
-            } else {
-                // TODO development only
-                onRegisterSuccess({}, null, null, null);
             }
+            StateRouter.goAndForget("yapp.childrenSettings.index");
         }
     }
 })();
