@@ -17,7 +17,8 @@
 			putUser: putUser,
 			rmUser: rmUser,
 			loadUser: loadUser,
-            updateUser: updateUser
+            updateUser: updateUser,
+            changeAtiveChild: changeAtiveChild
 		}
 
 		return service;
@@ -30,12 +31,31 @@
 			return yUser || loadUser();
 		}
 
+        function changeAtiveChild(id) {
+            if( id ) {
+                var i, numChildren = $rootScope.yUser.children.length;
+                for( i = 0; i < numChildren && $rootScope.yUser.children[i].id != id; i++ );
+                if( i < numChildren ) {
+                    $rootScope.activeName = $rootScope.yUser.children[i].name;
+                    $rootScope.activeEmail = $rootScope.yUser.children[i].email;
+                    $rootScope.activeChild = id;
+                }
+            } else {
+                $rootScope.activeName = user.name;
+                $rootScope.activeEmail = user.email;
+                $rootScope.activeChild = undefined;
+            }
+
+        }
 
 		function loadUser() {
 			var user = $localStorage.getObject(cacheKey);
             if (yUser == null) {
                 yUser = user;
                 $rootScope.yUser = user;
+                $rootScope.activeName = user.name;
+                $rootScope.activeEmail = user.email;
+                $rootScope.activeChild = undefined;
             }
             return user;
 		}

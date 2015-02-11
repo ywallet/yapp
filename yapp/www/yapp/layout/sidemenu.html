@@ -8,11 +8,15 @@
     </ion-nav-buttons>
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
     <ion-nav-buttons side="right">
-      <div class="fixed-right" style="text-align: right;" ng-controller="Popover">
-        <a ng-click="popover.show($event)" class="navbar-top-links">
+      <div class="fixed-right" style="text-align: right;">
+        <a style="margin-right: 10px;" ng-controller="ChildrenPopover" ng-click="children_popover.show($event)" class="navbar-top-links">
+          <i class="fa fa-users enlarged"></i>
+        </a>  
+
+        <a ng-controller="Popover" ng-click="popover.show($event)" class="navbar-top-links">
           <i class="fa fa-bell enlarged"></i>  
           <span class="count-info badge badge-assertive squared" ng-if="numNewNotifications > 0">{{numNewNotifications}}</span>
-        </a>
+        </a>      
       </div>
     </ion-nav-buttons>
   </ion-side-menu-content>
@@ -24,9 +28,9 @@
         <a>
           <span>
             <span class="block">
-              <strong class="font-bold">{{ yUser.name }}</strong>
+              <strong class="font-bold">{{ activeName }}</strong>
             </span>
-            <span class="text-muted text-xs block" style="color: #8095a8">{{ yUser.email }} <i class="fa fa-caret-down"></i></span>
+            <span class="text-muted text-xs block" style="color: #8095a8">{{ activeEmail }}</span>
           </span>
         </a>
       </div>

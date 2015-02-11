@@ -1,0 +1,10 @@
+<ion-popover-view>
+  <ion-content>
+    <div class="list">
+    	<a class="item" ng-click="chanegAtiveChild()">{{ yUser.name }}</a>
+		<a class="item" ng-repeat="ch in yUser.children" ng-click="chanegAtiveChild(ch.id)">
+		{{ch.name}}
+		</a>
+    </div>
+  </ion-content>
+</ion-popover-view>
