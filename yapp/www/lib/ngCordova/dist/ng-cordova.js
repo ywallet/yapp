@@ -4613,17 +4613,19 @@ angular.module("ngCordova.plugins.oauth", ["ngCordova.plugins.oauthUtility"])
                 var cordovaMetadata = cordova.require("cordova/plugin_list").metadata;
                 if (cordovaMetadata.hasOwnProperty("org.apache.cordova.inappbrowser") === true) {
                     var browserRef = window.open("https://coinbase.com/oauth/authorize?response_type=code&client_id=" +
-                                                 clientId + "&redirect_uri=urn:ietf:wg:oauth:2.0:oob", "_blank",
-                                                 "location=no,clearsessioncache=yes,clearcache=yes");
+                                                 clientId + "&redirect_uri=urn:ietf:wg:oauth:2.0:oob" +
+                                                 "&scope=balance+addresses+send:bypass_2fa+transfer+transactions+user" +
+                                                 "&meta[send_limit_amount]=100&meta[send_limit_currency]=USD&meta[send_limit_period]=day",
+                                                 "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
                     browserRef.addEventListener("loadstart", function (event) {
+                        var i, len;
                         console.log(event.url);
                         if ((event.url).indexOf("https://www.coinbase.com/oauth/authorize/") === 0) {
                             var requestToken = (event.url).split("/")[5];
                             deferred.resolve(requestToken);
-                        } else {   
-                            deferred.reject("Problem authenticating");
+                            browserRef.close();
                         }
-                        browserRef.close();
+                        // else { deferred.reject("Problem authenticating: unexpected coinbase url"); }
                     });
                     browserRef.addEventListener('exit', function(event) {
                         deferred.reject("The sign in flow was canceled");
