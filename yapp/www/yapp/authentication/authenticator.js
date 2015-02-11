@@ -15,7 +15,7 @@
         ////////////////////
 
         function authenticate(service, onSuccess, onError) {
-            var clientId = "7c49c1d40b21548106163d2fc4151671f6227cc27033ddf0c5fcb48f74e44019";
+            var clientId = "694fc2f618facf30b3b41726ee6d0ac04c650669ca3d114cb0bae4223cecade3";
             if (service != "coinbase") { return false; }
             if (window.cordova) {
                 $cordovaOauth.coinbase(clientId).then(onSuccess, onError);
