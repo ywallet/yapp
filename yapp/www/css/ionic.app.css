@@ -23,7 +23,7 @@ $dark:                            #444 !default;
 @font-face {
   font-family: "Ionicons";
   src: url("../lib/ionic/fonts/ionicons.eot?v=1.5.2");
-  src: url("../lib/ionic/fonts/ionicons.eot?v=1.5.2#iefix") format("embedded-opentype"), url("../lib/ionic/fonts/ionicons.ttf?v=1.5.2") format("truetype"), url("../lib/ionic/fonts/ionicons.woff?v=1.5.2") format("woff"), url("../lib/ionic/fonts/ionicons.svg?v=1.5.2#Ionicons") format("svg");
+  src: url("../lib/ionic/fonts/ionicons.eot?v=1.5.2#iefix") format("embedded-opentype"), url("../lib/ionic/fonts/ionicons.ttf") format("truetype"), url("../lib/ionic/fonts/ionicons.woff?v=1.5.2") format("woff"), url("../lib/ionic/fonts/ionicons.svg?v=1.5.2#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -5145,8 +5145,7 @@ textarea {
   height: auto; }
 
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
-  border: 0px;
-  border-bottom: 1px #1ab394 solid; }
+  border: 0; }
 
 input[type="radio"], input[type="checkbox"] {
   margin: 0;
@@ -7825,7 +7824,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 @font-face {
   font-family: 'FontAwesome';
   src: url('../lib/fontawesome/fonts/fontawesome-webfont.eot?v=4.2.0');
-  src: url('../lib/fontawesome/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../lib/fontawesome/fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../lib/fontawesome/fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('../lib/fontawesome/fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  src: url('../lib/fontawesome/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../lib/fontawesome/fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../lib/fontawesome/fonts/fontawesome-webfont.ttf') format('truetype'), url('../lib/fontawesome/fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal; }
 
