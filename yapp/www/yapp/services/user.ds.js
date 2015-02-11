@@ -72,7 +72,7 @@
                         (function (k, id) {
                             $http.get("https://ywallet.co/children/" + id)
                             .success(function (child_data) {
-                                data.children[k].name = child_data.name;
+                                data.children[k] = child_data;
                                 ++counter;
                                 if (counter === len) {
                                     putUser(data);
