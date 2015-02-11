@@ -24,7 +24,7 @@
 		}
 
 		function getPayments(loadCache) {
-
+			// ir a /transactions
 			var deferred = $q.defer(),
 				paymentsCache = DSCacheFactory.get('localCache'),
 				payments = paymentsCache.get(cacheKey);
@@ -58,9 +58,36 @@
 			return deferred.promise;
 		}
 		
-		function addPayment(from, to, title, description, amount, coinUnit, dateRequest, numberConfirmations) {
+		function addPayment(paymentData) {
+			if( loadCache === undefined )
+				var loadCache = false;
 
-
+			var deferred = $q.defer();
+			// post para /payments
+			console.log(paymentData);
+			
+			$http.get('https://ywallet.co/bitcoin_accounts/transactions')
+				.success(function (data, status) {
+					console.log(data);
+				})
+				.error(function(data, status){
+					console.log(data);
+			});
+			
+			$http.post('https://ywallet.co/bitcoin_accounts/payments', paymentData)
+				.success(function(data, status){
+					console.log(data);
+					paymentsCache.put(cacheKey, data);
+					deferred.resolve(data);
+					if( !loadCache )
+						$ionicLoading.hide();
+				})
+				.error(function(data, status){
+					console.log(data);
+					deferred.reject();
+					if( !loadCache )
+						$ionicLoading.hide();
+				});
 		}
 	}
 

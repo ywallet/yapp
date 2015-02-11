@@ -10,11 +10,12 @@
 	{
 		$scope.myBitcoinAddress = "1HeN2AfTEwkN9T4jXzmuwDFdcmxZRamhhV";
 		
-		$scope.paymentData = {
-			to: "teste",
-			amount: 1.22323,
-			note: "pagamento de teste"
-		};
+		$scope.paymentData = { payment : {
+				to: "teste",
+				amount: 1.22323,
+				notes: "pagamento de teste"
+			}
+	  };
 
 		$scope.scanBarcode = function() {
         $cordovaBarcodeScanner.scan().then(function(imageData) {
@@ -39,14 +40,19 @@
 
 		};
 		
-		$scope.doPayment = function () 
+		$scope.doPayment = function (paymentData) 
 		{
+			DPayments.addPayment(paymentData);
+			
 			console.log("post: { payment: paymentData } payments.json");
 			console.log($scope.paymentData);
 		};
 		
 		DPayments.getPayments().then(function(data)
 	 	{
+			if( loadCache === undefined )
+				var loadCache = false;
+			
 			$scope.payments = data;
 
 			// Add Payment

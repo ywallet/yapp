@@ -53,7 +53,7 @@
                 <div class="list">
                     <div class="item item-input item-stacked-label">
                         <label class="input-label">{{ 'destination_bitcoin_address' | translate }}</label>
-                        <input type="text" name="to" ng-model="paymentData.to" required ng-minlength="34">
+                        <input type="text" name="to" ng-model="paymentData.payment.to" required ng-minlength="34">
                         <span class="assertive item-text-wrap" ng-show="paymentForm.to.$error.required">
                             {{ 'this_is_required' | translate }}.
                         </span>
@@ -63,11 +63,11 @@
                     </div>
                     <div class="item item-input item-stacked-label">
                         <label class="input-label">{{ 'amount' | translate }}</label>
-                        <input type="number" name="amount" ng-model="paymentData.amount" step="any" required >
+                        <input type="number" name="amount" ng-model="paymentData.payment.amount" step="any" required >
                     </div>
                     <div class="item item-input item-stacked-label">
                         <label class="input-label">{{ 'notes' | translate }}</label>
-                        <input type="text" name="note" ng-model="paymentData.note" maxlength="200">
+                        <input type="text" name="note" ng-model="paymentData.payment.notes" maxlength="200">
                     </div>
                 </div>
                 <button class="button button-block button-positive" ng-click="scanBarcode()"><i class="icon fa fa-camera"></i></button>
