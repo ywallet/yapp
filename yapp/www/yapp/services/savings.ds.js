@@ -10,7 +10,7 @@
 	{
 		var cacheKey = 'Savings';
 		var hostname = (!window.cordova) ? 'api/' : '/android_asset/www/api/';
-		//var hostname = 'http://ywallet.co/';
+		//var hostname = 'https://ywallet.co/';
 
 		var service = {
 			getCacheKey : getCacheKey,

@@ -49,15 +49,11 @@
         }
 
         function onRegisterSuccess(data, status, headers, config) {
-            var i, len, user = $rootScope.yUser;
+            var user = $rootScope.yUser;
             // data is an object with child info: id, ...
             console.log("CHILD REGISTER", data);
-            for (i = 0, len = user.children.length; i < len; ++i) {
-                if (user.children[i].id === data.id) {
-                    user.children.name = data.name;
-                    break;
-                }
-            }
+            user.children_ids.push(data.id);
+            user.children.push(data);
             DSUser.putUser(user);
             StateRouter.goAndForget("yapp.childrenSettings.index");
         }
