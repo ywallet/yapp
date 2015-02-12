@@ -11,14 +11,14 @@
 		    <ion-item class="item item-icon-right" style="border-bottom: 1px solid #1ab394" ng-repeat="rule in rules | filter: searchText">
 		    	<div class="row">
 					<div class="col"><h2>{{ 'period' | translate }}: {{rule.period}}</h2></div>
-					<div class="col"><p>{{ 'money' | translate }}: {{rule.qty | currency}}</p></div>
-					<div class="col-10" ng-if="rule.active == 'false'" style="color:red;">{{ 'desactivate_status' | translate }}</div>
-					<div class="col-10" ng-if="rule.active == 'true'" style="color:green;">{{ 'activate_status' | translate }}</h2></div>
+					<div class="col"><p>{{ 'money' | translate }}: {{rule.amount | currency}}</p></div>
+					<div class="col-10" ng-if="rule.active == 'false' || rule.active == false" style="color:red;">{{ 'desactivate_status' | translate }}</div>
+					<div class="col-10" ng-if="rule.active == 'true' || rule.active == true" style="color:green;">{{ 'activate_status' | translate }}</h2></div>
 				</div>
 
       		    <ion-option-button class="button-dark" style="background: red;" ng-click="rmRule(rule.id)">{{ 'delete' | translate }}</ion-option-button>
-				<ion-option-button ng-if="rule.active == 'false'" class="button-dark" style="background: #1ab394;" ng-click="toogleAtivate(rule.id, true)">{{ 'activate' | translate }}</ion-option-button>
-				<ion-option-button ng-if="rule.active == 'true'" class="button-dark" style="background: #a2a2a2;" ng-click="toogleAtivate(rule.id, false)">{{ 'desactivate' | translate }}</ion-option-button>				    
+				<ion-option-button ng-if="rule.active == 'false' || rule.active == false" class="button-dark" style="background: #1ab394;" ng-click="toogleAtivate(rule.id, true)">{{ 'activate' | translate }}</ion-option-button>
+				<ion-option-button ng-if="rule.active == 'true' || rule.active == true" class="button-dark" style="background: #a2a2a2;" ng-click="toogleAtivate(rule.id, false)">{{ 'desactivate' | translate }}</ion-option-button>				    
 			</ion-item>	
 		</ion-list>
 	</ion-content>

@@ -18,7 +18,8 @@
 			rmUser: rmUser,
 			loadUser: loadUser,
             updateUser: updateUser,
-            changeAtiveChild: changeAtiveChild
+            changeAtiveChild: changeAtiveChild,
+            getActiveUser: getActiveUser
 		}
 
 		return service;
@@ -50,7 +51,7 @@
 
 		function loadUser() {
 			var user = $localStorage.getObject(cacheKey);
-            if (yUser == null) {
+            if (yUser == null ) {
                 yUser = user;
                 $rootScope.yUser = user;
                 $rootScope.activeName = user.name;
@@ -122,8 +123,22 @@
         }
 
 
-        function getChild(child_id, data, onSuccess, onError) {
-            
+        function getActiveUser() {
+
+            var result = undefined;
+
+            if( $rootScope.activeChild && yUser.children )
+            {
+                var i, numChildren = yUser.children.length;
+
+                for( i = 0; i < numChildren && yUser.children[i].id != $rootScope.activeChild; i++ );
+                if( i < numChildren )
+                    result = yUser.children[i];
+            }
+            else
+                result = yUser;
+
+            return result;
         }
 	}
 

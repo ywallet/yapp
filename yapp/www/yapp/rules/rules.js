@@ -9,7 +9,6 @@
 	function Rules($scope, $ionicModal, DSRules)
 	{
 		DSRules.getRules().then(function(data){
-
 			$scope.rules = data;
 
 			// Add Rule
@@ -32,14 +31,13 @@
 
 			$scope.addRule = function() {
 
-				console.log($scope.ruleData);
 				DSRules.addRule($scope.ruleData.qty, $scope.ruleData.period, $scope.ruleData.active).then(function(data){
 
 					$scope.rules.push(	{
 						"id": data.id, 
 						"period": $scope.ruleData.period,
-						"qty": $scope.ruleData.qty,
-						"active": $scope.ruleData.activate					 
+						"amount": $scope.ruleData.qty,
+						"active": $scope.ruleData.activate == 'true' ? true : false				 
 					});
 
 					$scope.ruleData = {};
@@ -66,6 +64,17 @@
 
 	        // Toggle Activate
 			$scope.toogleAtivate = function(id, ativate) {
+	        	var lengthRules = $scope.rules.length;
+	        	var i = 0, index = -1;
+	        		
+	        	for(; i < lengthRules && index == -1; i++)
+	        	{
+	        		if( $scope.rules[i].id == id )
+	        			index = i;
+	        	}
+
+	        	$scope.rules[index].active = !$scope.rules[index].active;
+
 	            DSRules.toogleAtivate(id, ativate);
 	        }		
 		});

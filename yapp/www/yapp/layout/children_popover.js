@@ -15,6 +15,7 @@
 
 			$scope.chanegAtiveChild = function(id) {
 				DSUser.changeAtiveChild(id);
+				children_popover.hide();
 			};
 		});
     }
