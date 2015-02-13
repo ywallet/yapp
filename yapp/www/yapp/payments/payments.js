@@ -12,7 +12,7 @@
 		
 		$scope.paymentData = { 
 			to: "1HeN2AfTEwkN9T4jXzmuwDFdcmxZRamhhV",
-			amount: 1.22323,
+			amount: "1",
 			notes: "pagamento de teste"
 		};
 
