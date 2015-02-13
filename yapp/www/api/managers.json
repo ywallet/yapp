@@ -1,0 +1,207 @@
+{
+	"id": 13,
+	"name": "Fernando Jorge da Silva Nogueira",
+	"nickname": null,
+	"email": "f@wp.8",
+	"birthday": null,
+	"phone": null,
+	"address": null,
+	"account_id": 18,
+	"children_ids": [],
+	"rule_ids": [],
+	"balance": "0.02351644",
+	"transactions": [{
+		"transaction": {
+			"id": "5476343a293ded0189000006",
+			"created_at": "2014-11-26T20:12:42+00:00",
+			"hsh": "8550c03c0d972fae6699d7edcd34406ba6664e3071c61f34d82d2d869a8acb23",
+			"category": "tx",
+			"amount": {
+				"fractional": "-679800.0",
+				"currency": {
+					"id": "btc",
+					"priority": 100,
+					"iso_code": "BTC",
+					"name": "Bitcoin",
+					"symbol": "B⃦",
+					"alternate_symbols": [],
+					"subunit": "Satoshi",
+					"subunit_to_unit": 100000000,
+					"symbol_first": true,
+					"html_entity": "",
+					"decimal_mark": ".",
+					"thousands_separator": ",",
+					"iso_numeric": ""
+				},
+				"bank": {
+					"rounding_method": null,
+					"rates": {},
+					"mutex": {}
+				}
+			},
+			"request": false,
+			"status": "complete",
+			"detailed_status": "completed",
+			"sender": {
+				"id": "54501bb7515addb701000020",
+				"email": "fjsnogueira@gmail.com",
+				"name": "Fernando Jorge da Silva Nogueira",
+				"avatar_url": "https://secure.gravatar.com/avatar/70a4dde422cf59f03e2031d9f93c037a.png?d=https://www.coinbase.com/assets/avatar.png\u0026r=R"
+			},
+			"recipient_address": "16Qg4uEf5Qpu3XL1yamSeuoJmQrkHQKwkh",
+			"sender_account": {
+				"id": "54501bb7515addb701000021",
+				"name": "My Wallet",
+				"type": "wallet"
+			},
+			"notes": "money for api test purposes",
+			"idem": ""
+		}
+	}, {
+		"transaction": {
+			"id": "547632c8d9b4204c3700000c",
+			"created_at": "2014-11-26T20:06:32+00:00",
+			"hsh": "6e05249d393347bfe576169aa66f4d92440d298b7d40a8100ac7f9679a073ece",
+			"category": "tx",
+			"amount": {
+				"fractional": "-339800.0",
+				"currency": {
+					"id": "btc",
+					"priority": 100,
+					"iso_code": "BTC",
+					"name": "Bitcoin",
+					"symbol": "B⃦",
+					"alternate_symbols": [],
+					"subunit": "Satoshi",
+					"subunit_to_unit": 100000000,
+					"symbol_first": true,
+					"html_entity": "",
+					"decimal_mark": ".",
+					"thousands_separator": ",",
+					"iso_numeric": ""
+				},
+				"bank": {
+					"rounding_method": null,
+					"rates": {},
+					"mutex": {}
+				}
+			},
+			"request": false,
+			"status": "complete",
+			"detailed_status": "completed",
+			"sender": {
+				"id": "54501bb7515addb701000020",
+				"email": "fjsnogueira@gmail.com",
+				"name": "Fernando Jorge da Silva Nogueira",
+				"avatar_url": "https://secure.gravatar.com/avatar/70a4dde422cf59f03e2031d9f93c037a.png?d=https://www.coinbase.com/assets/avatar.png\u0026r=R"
+			},
+			"recipient_address": "12xDGHzx3bCUK9h7LAWegnic9ieV3onBHM",
+			"sender_account": {
+				"id": "54501bb7515addb701000021",
+				"name": "My Wallet",
+				"type": "wallet"
+			},
+			"notes": "ywallet pocket money for test purposes",
+			"idem": ""
+		}
+	}, {
+		"transaction": {
+			"id": "5476076b42de0331db002500",
+			"created_at": "2014-11-26T17:01:31+00:00",
+			"hsh": "82c6be3fcda4810a1e3b3f42587885cf0130a2636675f817013ac65ec6910fb3",
+			"category": "tx",
+			"amount": {
+				"fractional": "3371244.0",
+				"currency": {
+					"id": "btc",
+					"priority": 100,
+					"iso_code": "BTC",
+					"name": "Bitcoin",
+					"symbol": "B⃦",
+					"alternate_symbols": [],
+					"subunit": "Satoshi",
+					"subunit_to_unit": 100000000,
+					"symbol_first": true,
+					"html_entity": "",
+					"decimal_mark": ".",
+					"thousands_separator": ",",
+					"iso_numeric": ""
+				},
+				"bank": {
+					"rounding_method": null,
+					"rates": {},
+					"mutex": {}
+				}
+			},
+			"request": false,
+			"status": "complete",
+			"detailed_status": "completed",
+			"sender": {
+				"id": "51a3de4e9ed34fe7a700007f",
+				"email": "imports@coinbase.com",
+				"name": "Paper Wallet Import"
+			},
+			"recipient_address": "1EcrqbqyGzMi3U6Q6DkoLaukX8nSaQLgtQ",
+			"recipient_account": {
+				"id": "54501bb7515addb701000021",
+				"name": "My Wallet",
+				"type": "wallet"
+			},
+			"notes": "Import from paper wallet with address 18huRRaxS92xkLXDTZSr8vGyGrDEnh8z4V",
+			"idem": ""
+		}
+	}, {
+		"transaction": {
+			"id": "54501ff7bfa67a55f000000a",
+			"created_at": "2014-10-28T23:00:07+00:00",
+			"hsh": null,
+			"category": "request",
+			"amount": {
+				"fractional": "358800.0",
+				"currency": {
+					"id": "btc",
+					"priority": 100,
+					"iso_code": "BTC",
+					"name": "Bitcoin",
+					"symbol": "B⃦",
+					"alternate_symbols": [],
+					"subunit": "Satoshi",
+					"subunit_to_unit": 100000000,
+					"symbol_first": true,
+					"html_entity": "",
+					"decimal_mark": ".",
+					"thousands_separator": ",",
+					"iso_numeric": ""
+				},
+				"bank": {
+					"rounding_method": null,
+					"rates": {},
+					"mutex": {}
+				}
+			},
+			"request": true,
+			"status": "pending",
+			"detailed_status": "pending",
+			"sender": {
+				"id": "54501ff6bfa67a55f0000006",
+				"email": "fjnogueira@yahoo.com",
+				"name": "fjnogueira@yahoo.com",
+				"avatar_url": "https://secure.gravatar.com/avatar/be3032a567a56c03d7de176decf65d0a.png?d=https://www.coinbase.com/assets/avatar.png\u0026r=R"
+			},
+			"recipient": {
+				"id": "54501bb7515addb701000020",
+				"email": "fjsnogueira@gmail.com",
+				"name": "Fernando Jorge da Silva Nogueira",
+				"avatar_url": "https://secure.gravatar.com/avatar/70a4dde422cf59f03e2031d9f93c037a.png?d=https://www.coinbase.com/assets/avatar.png\u0026r=R"
+			},
+			"recipient_account": {
+				"id": "54501bb7515addb701000021",
+				"name": "My Wallet",
+				"type": "wallet"
+			},
+			"notes": "para comprar um hamburger na euro poupança do macdonalds",
+			"idem": ""
+		}
+	}],
+	"week_transactions": []
+}
