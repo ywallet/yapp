@@ -10,26 +10,21 @@
 	{
 		$scope.myBitcoinAddress = "1HeN2AfTEwkN9T4jXzmuwDFdcmxZRamhhV";
 		
-		$scope.paymentData = { payment : {
-				to: "teste",
-				amount: 1.22323,
-				notes: "pagamento de teste"
-			}
-	  };
+		$scope.paymentData = { 
+			to: "1HeN2AfTEwkN9T4jXzmuwDFdcmxZRamhhV",
+			amount: 1.22323,
+			notes: "pagamento de teste"
+		};
 
 		$scope.scanBarcode = function() {
         $cordovaBarcodeScanner.scan().then(function(imageData) {
             $scope.paymentData.to = imageData.text;
-            console.log("Barcode text -> " + imageData.text);
-            console.log("Barcode Format -> " + imageData.format);
-            console.log("Cancelled -> " + imageData.cancelled);
         }, function(error) {
             console.log("An error happened -> " + error);
         });
 		};
 		
-		$scope.encodeQr = function () 
-		{
+		$scope.encodeQr = function () {
 			$cordovaBarcodeScanner
 				.encode(BarcodeScanner.Encode.TEXT_TYPE, $scope.myBitcoinAddress)
 				.then(function(success) {
@@ -40,16 +35,17 @@
 
 		};
 		
-		$scope.doPayment = function (paymentData) 
-		{
-			DPayments.addPayment(paymentData);
+		$scope.doPayment = function (paymentData) {
+			DPayments.addPayment($scope.paymentData);
 			
-			console.log("post: { payment: paymentData } payments.json");
-			console.log($scope.paymentData);
+			$scope.paymentData = { 
+				to: '',
+				amount: '',
+				notes: ''
+			};
 		};
 		
-		DPayments.getPayments().then(function(data)
-	 	{
+		DPayments.getPayments().then(function(data) {
 			if( loadCache === undefined )
 				var loadCache = false;
 			
@@ -72,16 +68,6 @@
 			$scope.closeAddPayments = function() {
 				$scope.modal.hide();
 			};
-
-			$scope.addPayments = function() {
-				console.log('adding payment', $scope.loginData);
-
-				// Simulate a login delay. Remove this and replace with your login
-				// code if using a login system
-				$timeout(function() {
-				$scope.closeLogin();
-				}, 1000);
-			};			
 		});
 	}
 })();

@@ -121,6 +121,12 @@
   </head>
 
   <body ng-app="yapp">
+   	<!-- wp8 scrolling fix
+   			 found at: http://forum.ionicframework.com/t/wp8-scrolling-fixed-maybe-help-someone-else/7854
+   	  -->
+    <style type="text/css">
+			body {  overflow: hidden;  -ms-content-zooming: none; }
+		</style>
     <ion-nav-view></ion-nav-view>
   </body>
 </html>

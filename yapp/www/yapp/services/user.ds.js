@@ -50,8 +50,9 @@
         }
 
 		function loadUser() {
+			console.log(cacheKey);
 			var user = $localStorage.getObject(cacheKey);
-            if (yUser == null ) {
+            if (yUser == null && user != null) {
                 yUser = user;
                 $rootScope.yUser = user;
                 $rootScope.activeName = user.name;
